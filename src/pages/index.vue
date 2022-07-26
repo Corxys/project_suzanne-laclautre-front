@@ -4,19 +4,25 @@
       <nav class="header__nav">
         <div class="header__nav-text">
           <div class="header__nav-logo">
-            <span class="header__nav-logo--bold">Suzanne</span> Laclautre
+            <nuxt-link to="/">
+              <span class="header__nav-logo--bold">Suzanne</span> Laclautre
+            </nuxt-link>
             <p class="header__nav-intro">
               Designeuse graphique <br /> et conceptrice d’outils pédagogiques.
             </p>
           </div>
         </div>
         <div class="header__nav-buttons">
-          <button class="header__nav-button">
-            À propos
-          </button>
-          <button class="header__nav-button">
-            Contact
-          </button>
+          <nuxt-link to="/a-propos">
+            <div class="header__nav-button button">
+                À propos
+            </div>
+          </nuxt-link>
+          <nuxt-link to="/contact">
+            <div class="header__nav-button button">
+                Contact
+            </div>
+          </nuxt-link>
         </div>
       </nav>
       <div class="header__categories">
@@ -51,20 +57,44 @@
         À la une
       </h1>
       <div class="section__content">
-         <div class="section__projects">
-           <div class="section__project">
-             <img class="section__project-img" src="@/assets/images/project_01.png" alt="Cartes de visite" />
-           </div>
-           <div class="section__project">
-             <img class="section__project-img" src="@/assets/images/project_02.png" alt="Objet d'édition" />
-           </div>
-           <div class="section__project">
-             <img class="section__project-img" src="@/assets/images/project_03.png" alt="Carotte avec des feuilles vertes sur fond jaune et rose" />
-           </div>
-           <div class="section__project">
-             <img class="section__project-img" src="@/assets/images/project_04.png" alt="Badge jaune avec un casque de chantier dessiné dessus" />
-           </div>
-         </div>
+        <div class="section__projects">
+          <div class="section__projects-line">
+            <div class="section__project" @mousemove="showTooltip">
+              <img class="section__project-img" src="@/assets/images/project_01.png" alt="Cartes de visite" />
+              <span class="section__project-text">
+                Cartes de visite
+                <br/>
+                2021
+              </span>
+            </div>
+            <div class="section__project">
+              <img class="section__project-img" src="@/assets/images/project_02.png" alt="Objet d'édition" />
+              <span class="section__project-text">
+                Édition
+                <br/>
+                2021
+              </span>
+            </div>
+          </div>
+          <div class="section__projects-line">
+            <div class="section__project">
+              <img class="section__project-img" src="@/assets/images/project_03.png" alt="Carotte avec des feuilles vertes sur fond jaune et rose" />
+              <span class="section__project-text">
+                Illustration
+                <br/>
+                2021
+              </span>
+            </div>
+            <div class="section__project">
+              <img class="section__project-img" src="@/assets/images/project_04.png" alt="Badge jaune avec un casque de chantier dessiné dessus" />
+              <span class="section__project-text">
+                Dispositifs
+                <br/>
+                2021
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="section__contact">
         Mon travail t'intéresse ?
@@ -151,6 +181,10 @@ export default {
       font-size: 14px;
     }
 
+    &-buttons {
+      display: flex;
+    }
+
     &-button {
       &:first-child {
         margin-right: 40px;
@@ -224,41 +258,47 @@ export default {
   }
 
   &__projects {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     flex-grow: 1;
-    display: grid;
-    grid-template-columns: repeat(9, 1fr);
-    grid-gap: 40px;
-    margin: 30px 0;
+    margin: 65px 0;
     padding: 0 165px;
+
+    &-line {
+      display: flex;
+
+      &:first-child {
+        align-items: flex-end;
+      }
+
+      &:last-child {
+        align-items: flex-start;
+      }
+    }
 
     div {
       img {
-        width: 100%;
-        height: 100%;
         object-fit: scale-down;
       }
     }
 
     :nth-child(1) {
-      grid-column: 2 / 6;
       img {
         object-position: top right;
       }
     }
     :nth-child(2) {
-      grid-column: 6 / -1;
       img {
         object-position: bottom left;
       }
     }
     :nth-child(3) {
-      grid-column: 1 / 4;
       img {
         object-position: top right;
       }
     }
     :nth-child(4) {
-      grid-column: 4 / 8;
       img {
         object-position: bottom left;
       }
@@ -266,7 +306,22 @@ export default {
   }
 
   &__project {
-    min-height: 500px;
+    position: static;
+    margin: 30px;
+
+    &-text {
+      display: none;
+    }
+
+    &:hover {
+      span {
+        z-index: 10;
+        width: 150px;
+        display: block;
+        position: fixed;
+        background-color: red;
+      }
+    }
   }
 
   &__contact {
