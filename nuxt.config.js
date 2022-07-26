@@ -35,8 +35,8 @@ export default {
 
   styleResources: {
     scss: [
-      '~/assets/styles/variables.scss',
-      '~/assets/styles/mixins.scss'
+      '~/assets/styles/_variables.scss',
+      '~/assets/styles/_mixins.scss'
     ]
   },
 
@@ -47,8 +47,6 @@ export default {
     // See: https://www.npmjs.com/package/@nuxtjs/style-resources
     '@nuxtjs/style-resources'
   ],
-
-  // googleFonts: ,
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
