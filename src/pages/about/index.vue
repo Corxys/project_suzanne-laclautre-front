@@ -1,7 +1,7 @@
 <template>
-  <div class="about">
+  <section class="about">
     <div class="about__nav">
-      <Logo class="about__logo"/>
+      <Logo class="about__logo" />
     </div>
     <div class="about__content">
       <img class="about__content-img" src="@/assets/images/character__illustration.png" alt="Illustration de Suzanne"/>
@@ -12,7 +12,7 @@
     <nuxt-link class="about__content-back" to="/">
       <ArrowBack />
     </nuxt-link>
-  </div>
+  </section>
 </template>
 
 <script>
