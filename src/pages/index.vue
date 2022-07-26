@@ -4,16 +4,14 @@
       <nav class="header__nav">
         <div class="header__nav-text">
           <div class="header__nav-logo">
-            <nuxt-link to="/">
-              <span class="header__nav-logo--bold">Suzanne</span> Laclautre
-            </nuxt-link>
+            <Logo />
             <p class="header__nav-intro">
               Designeuse graphique <br /> et conceptrice d’outils pédagogiques.
             </p>
           </div>
         </div>
         <div class="header__nav-buttons">
-          <nuxt-link to="/a-propos">
+          <nuxt-link to="/about">
             <div class="header__nav-button button">
                 À propos
             </div>
@@ -59,7 +57,7 @@
       <div class="section__content">
         <div class="section__projects">
           <div class="section__projects-line">
-            <div class="section__project" @mousemove="showTooltip">
+            <div class="section__project">
               <img class="section__project-img" src="@/assets/images/project_01.png" alt="Cartes de visite" />
               <span class="section__project-text">
                 Cartes de visite
@@ -117,7 +115,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .header {
   position: relative;
   min-height: 100vh;
@@ -152,25 +150,6 @@ export default {
 
     &-text {
       position: relative;
-    }
-
-    &-logo {
-      min-width: 232px;
-
-      &--bold {
-        position: relative;
-        font-weight: 700;
-
-        &:after {
-          content: '';
-          width: 100%;
-          height: 1px;
-          position: absolute;
-          bottom: 2px;
-          left: 0;
-          background-color: $color-black;
-        }
-      }
     }
 
     &-intro {

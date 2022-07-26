@@ -45,7 +45,9 @@ export default {
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
     // See: https://www.npmjs.com/package/@nuxtjs/style-resources
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
+    // See : https://www.npmjs.com/package/@nuxtjs/router-extras
+    '@nuxtjs/router-extras'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
