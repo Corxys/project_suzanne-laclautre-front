@@ -165,6 +165,8 @@ export default {
     }
 
     &-button {
+      padding: 12px 20px 7px 20px;
+
       &:first-child {
         margin-right: 40px;
       }

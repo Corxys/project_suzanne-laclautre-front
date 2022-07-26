@@ -13,8 +13,8 @@ body {
   text-align: center;
   letter-spacing: 1px;
   border: 1px solid $color-black;
-  width: 130px;
-  padding: 12px 0 7px 0;
+  min-width: 130px;
+  min-height: 38px;
 }
 
 h1 {
