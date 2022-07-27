@@ -1,28 +1,6 @@
 <template>
   <div class="container">
     <header class="header">
-      <nav class="header__nav">
-        <div class="header__nav-text">
-          <div class="header__nav-logo">
-            <Logo />
-            <p class="header__nav-intro">
-              Designeuse graphique <br /> et conceptrice d’outils pédagogiques.
-            </p>
-          </div>
-        </div>
-        <div class="header__nav-buttons">
-          <nuxt-link to="/about">
-            <div class="header__nav-button button">
-                À propos
-            </div>
-          </nuxt-link>
-          <nuxt-link to="/contact">
-            <div class="header__nav-button button">
-                Contact
-            </div>
-          </nuxt-link>
-        </div>
-      </nav>
       <div class="header__categories">
         <div class="header__category">
           <img class="header__category-img" src="@/assets/images/category_graphism.png" alt="Dessin d'un crayon" />
@@ -134,43 +112,6 @@ export default {
     background-image: linear-gradient(0deg, $color-white 10%, #ffffff00 100%);
     width: 100%;
     height: 20%;
-  }
-
-  &__nav {
-    height: 100px;
-    position: absolute;
-    top: 0;
-    left: 65px;
-    right: 65px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: $font-secondary;
-    font-size: 18px;
-
-    &-text {
-      position: relative;
-    }
-
-    &-intro {
-      position: absolute;
-      top: 40px;
-      left: 0;
-      font-family: $font-primary;
-      font-size: 14px;
-    }
-
-    &-buttons {
-      display: flex;
-    }
-
-    &-button {
-      padding: 12px 20px 7px 20px;
-
-      &:first-child {
-        margin-right: 40px;
-      }
-    }
   }
 
   &__categories {

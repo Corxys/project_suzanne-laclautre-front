@@ -1,8 +1,5 @@
 <template>
   <section class="about">
-    <div class="about__nav">
-      <Logo class="about__logo" />
-    </div>
     <div class="about__content">
       <img class="about__content-img" src="@/assets/images/character__illustration.png" alt="Illustration de Suzanne"/>
       <p class="about__content-text">
@@ -31,6 +28,12 @@ export default {
   height: 100vh;
   padding: 65px;
   background-color: $color-primary;
+
+  nav {
+    &__text {
+      display: none;
+    }
+  }
 
   &__nav {
     position: absolute;
