@@ -56,7 +56,7 @@ export default {
 
 <style scoped lang="scss">
 .projects {
-  margin-top: 200px;
+  margin: 200px 0;
   nav {
     height: 100px;
   }

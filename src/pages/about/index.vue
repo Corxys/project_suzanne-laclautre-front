@@ -54,7 +54,6 @@ export default {
 
     &-text {
       font-style: italic;
-      line-height: 1.5;
       margin-top: 65px;
       width: 80%;
     }
