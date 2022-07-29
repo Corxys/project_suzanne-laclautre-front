@@ -2,26 +2,36 @@
   <div class="container">
     <header class="header">
       <div class="header__categories">
-        <div class="header__category">
-          <img class="header__category-image" src="@/assets/images/category_graphism.png" alt="Dessin d'un crayon" />
-          <div class="header__category-title">Graphisme</div>
-        </div>
-        <div class="header__category">
-          <img class="header__category-image" src="@/assets/images/category_edition.png" alt="Dessin d'un crayon" />
-          <div class="header__category-title">Édition</div>
-        </div>
-        <div class="header__category">
-          <img class="header__category-image" src="@/assets/images/category_workshop.png" alt="Dessin d'un crayon" />
-          <div class="header__category-title">Ateliers</div>
-        </div>
-        <div class="header__category">
-          <img class="header__category-image" src="@/assets/images/category_illustration.png" alt="Dessin d'un crayon" />
-          <div class="header__category-title">Illustrations</div>
-        </div>
-        <div class="header__category">
-          <img class="header__category-image" src="@/assets/images/category_tools.png" alt="Dessin d'un crayon" />
-          <div class="header__category-title">Dispositifs</div>
-        </div>
+        <nuxt-link class="header__category" to="/projects">
+          <img class="header__category-image" src="@/assets/images/category_graphism.png" alt="Dessin d'un crayon">
+          <div class="header__category-title">
+            Graphisme
+          </div>
+        </nuxt-link>
+        <nuxt-link class="header__category" to="/projects">
+          <img class="header__category-image" src="@/assets/images/category_edition.png" alt="Dessin d'un carnet avec une fleur sur la couverture">
+          <div class="header__category-title">
+            Édition
+          </div>
+        </nuxt-link>
+        <nuxt-link class="header__category" to="/projects">
+          <img class="header__category-image" src="@/assets/images/category_workshop.png" alt="Dessin d'une paire de ciseaux">
+          <div class="header__category-title">
+            Ateliers
+          </div>
+        </nuxt-link>
+        <nuxt-link class="header__category" to="/projects">
+          <img class="header__category-image" src="@/assets/images/category_illustration.png" alt="Dessin de deux cartes avec des formes abstraites">
+          <div class="header__category-title">
+            Illustrations
+          </div>
+        </nuxt-link>
+        <nuxt-link class="header__category" to="/projects">
+          <img class="header__category-image" src="@/assets/images/category_tools.png" alt="Dessin d'une boîte rectangulaire ouverte">
+          <div class="header__category-title">
+            Dispositifs
+          </div>
+        </nuxt-link>
         <div class="header__category mobile">
           <div class="header__scroll">
             <img class="header__scroll-border" src="@/assets/images/scroll_border.png" alt="Scroll pour en voir plus">
@@ -43,8 +53,8 @@
           <div class="section__projects">
             <div class="section__projects-line">
               <div class="section__project">
-                <nuxt-link to="/projects">
-                  <img class="section__project-image" src="@/assets/images/project_01.png" alt="Cartes de visite" />
+                <nuxt-link to="/project">
+                  <img class="section__project-image" src="@/assets/images/project_01.png" alt="Cartes de visite">
                   <span class="section__project-text">
                     Cartes de visite
                     <br>
@@ -53,8 +63,8 @@
                 </nuxt-link>
               </div>
               <div class="section__project">
-                <nuxt-link to="/projects">
-                  <img class="section__project-image" src="@/assets/images/project_02.png" alt="Objet d'édition" />
+                <nuxt-link to="/project">
+                  <img class="section__project-image" src="@/assets/images/project_02.png" alt="Objet d'édition">
                   <span class="section__project-text">
                     Édition
                     <br>
@@ -65,8 +75,8 @@
             </div>
             <div class="section__projects-line">
               <div class="section__project">
-                <nuxt-link to="/projects">
-                  <img class="section__project-image" src="@/assets/images/project_03.png" alt="Carotte avec des feuilles vertes sur fond jaune et rose" />
+                <nuxt-link to="/project">
+                  <img class="section__project-image" src="@/assets/images/project_03.png" alt="Carotte avec des feuilles vertes sur fond jaune et rose">
                   <span class="section__project-text">
                     Illustration
                     <br>
@@ -75,8 +85,8 @@
                 </nuxt-link>
               </div>
               <div class="section__project">
-                <nuxt-link to="/projects">
-                  <img class="section__project-image" src="@/assets/images/project_04.png" alt="Badge jaune avec un casque de chantier dessiné dessus" />
+                <nuxt-link to="/project">
+                  <img class="section__project-image" src="@/assets/images/project_04.png" alt="Badge jaune avec un casque de chantier dessiné dessus">
                   <span class="section__project-text">
                     Dispositifs
                     <br>
@@ -191,8 +201,11 @@ export default {
       flex-wrap: nowrap;
     }
     &__category {
-      margin-right: 40px;
+      margin: 0 20px 0 20px;
       min-width: 90px;
+      :nth-child(1) {
+        margin-left: 0;
+      }
       :nth-child(5) {
         margin-right: 0;
       }
