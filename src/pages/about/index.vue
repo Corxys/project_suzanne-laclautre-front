@@ -1,7 +1,7 @@
 <template>
   <section class="about">
     <div class="about__content">
-      <img class="about__content-img" src="@/assets/images/character__illustration.png" alt="Illustration de Suzanne"/>
+      <img class="about__content-image" src="@/assets/images/character__illustration.png" alt="Illustration de Suzanne">
       <p class="about__content-text">
         Suzanne est designeuse graphique et spécialisée dans la conception de dispositifs pédagogiques. Elle partage son temps entre une pratique d’un graphisme porteur de sens et des projets à visée pédagogique allant de la réalisation d’outils sur mesure à une démarche complète en passant par de l’animation d’ateliers pour différentes structures scolaires, associatives et culturelles.
       </p>
@@ -14,27 +14,35 @@
 
 <script>
 export default {
-  name: 'AboutPage'
+  name: 'AboutPage',
+  beforeMount () {
+    const vh = window.innerHeight / 100
+    document.documentElement.style.setProperty('--vh', `${vh}px`)
+    window.addEventListener('resize', () => {
+      const vh = window.innerHeight / 100
+      document.documentElement.style.setProperty('--vh', `${vh}px`)
+    })
+  }
 }
 </script>
 
 <style scoped lang="scss">
+:root {
+  --vh: 1vh;
+}
+
 .about {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 50%;
-  height: 100vh;
-  padding: 65px;
-  background-color: $color-primary;
-
+  min-height: calc(var(--vh, 1vh) * 100);
+  padding: 100px 30px 30px 30px;
   nav {
     &__text {
       display: none;
     }
   }
-
   &__nav {
     position: absolute;
     top: 0;
@@ -44,23 +52,42 @@ export default {
     height: 100px;
     padding: 0 65px;
   }
-
   &__content {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
+    &-image {
+      max-width: 200px;
+    }
     &-text {
       font-style: italic;
-      margin-top: 65px;
-      width: 80%;
+      line-height: 1.5;
+      margin: 30px 0 60px 0;
+      max-width: 425px;
     }
-
     &-back {
       align-self: flex-start;
     }
   }
 }
+
+@media (min-width: 768px) {
+  .about {
+    width: 50%;
+    height: 100vh;
+    padding: 100px 65px 65px 65px;
+    background-color: $color-primary;
+    &-text {
+      width: 80%;
+    }
+  }
+}
 </style>
+
+<router>
+{
+  path: '/a-propos'
+}
+</router>

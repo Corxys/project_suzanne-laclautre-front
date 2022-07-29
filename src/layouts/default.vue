@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="default">
     <nav-bar />
     <nuxt />
   </div>
