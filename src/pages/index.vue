@@ -53,7 +53,7 @@
           <div class="section__projects">
             <div class="section__projects-line">
               <div class="section__project">
-                <nuxt-link to="/project">
+                <nuxt-link to="/projet">
                   <img class="section__project-image" src="@/assets/images/project_01.png" alt="Cartes de visite">
                   <span class="section__project-text">
                     Cartes de visite
@@ -63,7 +63,7 @@
                 </nuxt-link>
               </div>
               <div class="section__project">
-                <nuxt-link to="/project">
+                <nuxt-link to="/projet">
                   <img class="section__project-image" src="@/assets/images/project_02.png" alt="Objet d'édition">
                   <span class="section__project-text">
                     Édition
@@ -75,7 +75,7 @@
             </div>
             <div class="section__projects-line">
               <div class="section__project">
-                <nuxt-link to="/project">
+                <nuxt-link to="/projet">
                   <img class="section__project-image" src="@/assets/images/project_03.png" alt="Carotte avec des feuilles vertes sur fond jaune et rose">
                   <span class="section__project-text">
                     Illustration
@@ -85,7 +85,7 @@
                 </nuxt-link>
               </div>
               <div class="section__project">
-                <nuxt-link to="/project">
+                <nuxt-link to="/projet">
                   <img class="section__project-image" src="@/assets/images/project_04.png" alt="Badge jaune avec un casque de chantier dessiné dessus">
                   <span class="section__project-text">
                     Dispositifs
@@ -120,9 +120,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.mobile { display: block; }
-.desktop { display: none; }
-
 .header {
   position: relative;
   display: flex;
@@ -321,10 +318,5 @@ export default {
       width: 50%;
     }
   }
-}
-
-@media (min-width: 768px) {
-  .mobile { display: none; }
-  .desktop { display: block; }
 }
 </style>
