@@ -2,31 +2,31 @@
   <div class="container">
     <header class="header">
       <div class="header__categories">
-        <nuxt-link class="header__category" to="/projects">
+        <nuxt-link class="header__category" to="/projets">
           <img class="header__category-image" src="@/assets/images/category_graphism.png" alt="Dessin d'un crayon">
           <div class="header__category-title">
             Graphisme
           </div>
         </nuxt-link>
-        <nuxt-link class="header__category" to="/projects">
+        <nuxt-link class="header__category" to="/projets">
           <img class="header__category-image" src="@/assets/images/category_edition.png" alt="Dessin d'un carnet avec une fleur sur la couverture">
           <div class="header__category-title">
             Édition
           </div>
         </nuxt-link>
-        <nuxt-link class="header__category" to="/projects">
+        <nuxt-link class="header__category" to="/projets">
           <img class="header__category-image" src="@/assets/images/category_workshop.png" alt="Dessin d'une paire de ciseaux">
           <div class="header__category-title">
             Ateliers
           </div>
         </nuxt-link>
-        <nuxt-link class="header__category" to="/projects">
+        <nuxt-link class="header__category" to="/projets">
           <img class="header__category-image" src="@/assets/images/category_illustration.png" alt="Dessin de deux cartes avec des formes abstraites">
           <div class="header__category-title">
             Illustrations
           </div>
         </nuxt-link>
-        <nuxt-link class="header__category" to="/projects">
+        <nuxt-link class="header__category" to="/projets">
           <img class="header__category-image" src="@/assets/images/category_tools.png" alt="Dessin d'une boîte rectangulaire ouverte">
           <div class="header__category-title">
             Dispositifs
