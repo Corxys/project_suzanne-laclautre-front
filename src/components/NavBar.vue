@@ -2,11 +2,11 @@
   <nav class="nav">
     <div class="nav__logo">
       <logo />
-      <div v-show="$route.path === '/' || $route.path === '/projects'" class="nav__intro">
+      <div v-show="$route.path === '/' || $route.path === '/projets'" class="nav__intro">
         Designeuse graphique <br> et conceptrice d’outils pédagogiques.
       </div>
     </div>
-    <div v-show="$route.path === '/' || $route.path === '/projects'" class="nav__buttons">
+    <div v-show="$route.path === '/' || $route.path === '/projets'" class="nav__buttons">
       <nuxt-link to="/a-propos">
         <custom-button class="nav__button" text="À propos" />
       </nuxt-link>
