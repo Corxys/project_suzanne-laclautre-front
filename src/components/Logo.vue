@@ -14,9 +14,8 @@ export default {
 
 <style scoped lang="scss">
 .logo {
-  font-size: 18px;
+  font-size: 16px;
   font-family: $font-secondary;
-  min-width: 232px;
 
   span {
     position: relative;
@@ -31,6 +30,13 @@ export default {
       left: 0;
       background-color: $color-black;
     }
+  }
+}
+
+@media (min-width: 768px) {
+  .logo {
+    font-size: 18px;
+    min-width: 232px;
   }
 }
 </style>
