@@ -11,6 +11,12 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss">
+.mobile { display: block; }
+.desktop { display: none; }
 
+@media (min-width: 768px) {
+  .mobile { display: none; }
+  .desktop { display: block; }
+}
 </style>
