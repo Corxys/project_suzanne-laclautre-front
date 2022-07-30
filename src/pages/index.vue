@@ -3,45 +3,46 @@
     <header class="header">
       <div class="header__categories">
         <nuxt-link class="header__category" to="/projets">
-          <img class="header__category-image" src="@/assets/images/category_graphism.png" alt="Dessin d'un crayon">
+          <nuxt-img class="header__category-image" src="/images/category_graphism.png" alt="Dessin d'un crayon" />
           <div class="header__category-title">
             Graphisme
           </div>
         </nuxt-link>
         <nuxt-link class="header__category" to="/projets">
-          <img class="header__category-image" src="@/assets/images/category_edition.png" alt="Dessin d'un carnet avec une fleur sur la couverture">
+          <nuxt-img class="header__category-image" src="/images/category_edition.png" alt="Dessin d'un carnet avec une fleur sur la couverture" />
           <div class="header__category-title">
             Édition
           </div>
+          </nuxt-img>
         </nuxt-link>
         <nuxt-link class="header__category" to="/projets">
-          <img class="header__category-image" src="@/assets/images/category_workshop.png" alt="Dessin d'une paire de ciseaux">
+          <nuxt-img class="header__category-image" src="/images/category_workshop.png" alt="Dessin d'une paire de ciseaux" />
           <div class="header__category-title">
             Ateliers
           </div>
         </nuxt-link>
         <nuxt-link class="header__category" to="/projets">
-          <img class="header__category-image" src="@/assets/images/category_illustration.png" alt="Dessin de deux cartes avec des formes abstraites">
+          <nuxt-img class="header__category-image" src="/images/category_illustration.png" alt="Dessin de deux cartes avec des formes abstraites" />
           <div class="header__category-title">
             Illustrations
           </div>
         </nuxt-link>
         <nuxt-link class="header__category" to="/projets">
-          <img class="header__category-image" src="@/assets/images/category_tools.png" alt="Dessin d'une boîte rectangulaire ouverte">
+          <nuxt-img class="header__category-image" src="/images/category_tools.png" alt="Dessin d'une boîte rectangulaire ouverte" />
           <div class="header__category-title">
             Dispositifs
           </div>
         </nuxt-link>
         <div class="header__category mobile">
           <div class="header__scroll">
-            <img class="header__scroll-border" src="@/assets/images/scroll_border.png" alt="Scroll pour en voir plus">
-            <img class="header__scroll-body" src="@/assets/images/scroll_body.png" alt="Illustration">
+            <nuxt-img class="header__scroll-border" src="/images/scroll_border.png" alt="Scroll pour en voir plus" />
+            <nuxt-img class="header__scroll-body" src="/images/scroll_body.png" alt="Illustration" />
           </div>
         </div>
       </div>
       <div class="header__scroll desktop">
-        <img class="header__scroll-border" src="@/assets/images/scroll_border.png" alt="Scroll pour en voir plus">
-        <img class="header__scroll-body" src="@/assets/images/scroll_body.png" alt="Illustration">
+        <nuxt-img class="header__scroll-border" src="/images/scroll_border.png" alt="Scroll pour en voir plus" />
+        <nuxt-img class="header__scroll-body" src="/images/scroll_body.png" alt="Illustration" />
       </div>
     </header>
     <main class="main">
@@ -54,44 +55,48 @@
             <div class="section__projects-line">
               <div class="section__project">
                 <nuxt-link to="/projet">
-                  <img class="section__project-image" src="@/assets/images/project_01.png" alt="Cartes de visite">
-                  <span class="section__project-text">
-                    Cartes de visite
-                    <br>
-                    2021
-                  </span>
+                  <nuxt-img class="section__project-image" src="/images/project_01.png" alt="Cartes de visite">
+                    <span class="section__project-text">
+                      Cartes de visite
+                      <br>
+                      2021
+                    </span>
+                  </nuxt-img>
                 </nuxt-link>
               </div>
               <div class="section__project">
                 <nuxt-link to="/projet">
-                  <img class="section__project-image" src="@/assets/images/project_02.png" alt="Objet d'édition">
-                  <span class="section__project-text">
-                    Édition
-                    <br>
-                    2021
-                  </span>
+                  <nuxt-img class="section__project-image" src="/images/project_02.png" alt="Objet d'édition">
+                    <span class="section__project-text">
+                      Édition
+                      <br>
+                      2021
+                    </span>
+                  </nuxt-img>
                 </nuxt-link>
               </div>
             </div>
             <div class="section__projects-line">
               <div class="section__project">
                 <nuxt-link to="/projet">
-                  <img class="section__project-image" src="@/assets/images/project_03.png" alt="Carotte avec des feuilles vertes sur fond jaune et rose">
-                  <span class="section__project-text">
-                    Illustration
-                    <br>
-                    2021
-                  </span>
+                  <nuxt-img class="section__project-image" src="/images/project_03.png" alt="Carotte avec des feuilles vertes sur fond jaune et rose">
+                    <span class="section__project-text">
+                      Illustration
+                      <br>
+                      2021
+                    </span>
+                  </nuxt-img>
                 </nuxt-link>
               </div>
               <div class="section__project">
                 <nuxt-link to="/projet">
-                  <img class="section__project-image" src="@/assets/images/project_04.png" alt="Badge jaune avec un casque de chantier dessiné dessus">
-                  <span class="section__project-text">
-                    Dispositifs
-                    <br>
-                    2021
-                  </span>
+                  <nuxt-img class="section__project-image" src="/images/project_04.png" alt="Badge jaune avec un casque de chantier dessiné dessus">
+                    <span class="section__project-text">
+                      Dispositifs
+                      <br>
+                      2021
+                    </span>
+                  </nuxt-img>
                 </nuxt-link>
               </div>
             </div>

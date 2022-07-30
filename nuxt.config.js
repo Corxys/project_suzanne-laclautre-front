@@ -51,14 +51,18 @@ export default {
     '@nuxtjs/eslint-module',
     // See: https://www.npmjs.com/package/@nuxtjs/style-resources
     '@nuxtjs/style-resources',
-    // See : https://www.npmjs.com/package/@nuxtjs/router-extras
-    '@nuxtjs/router-extras'
+    // See: https://www.npmjs.com/package/@nuxtjs/router-extras
+    '@nuxtjs/router-extras',
+    // See: https://www.npmjs.com/package/@nuxtjs/svg
+    '@nuxtjs/svg'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios'
+    // See: https://go.nuxtjs.dev/axios
+    '@nuxtjs/axios',
+    // See: https://image.nuxtjs.org/
+    '@nuxt/image'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

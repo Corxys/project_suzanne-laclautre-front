@@ -8,7 +8,7 @@
         2021
       </h3>
       <div class="project__header-image mobile">
-        <img src="@/assets/images/project-page_01.png" alt="">
+        <nuxt-img src="/images/project-page_01.png" alt="" />
       </div>
       <p class="project__header-text">
         Le projet à été réalisé dans le cadre d’un service civique au sein de l’association, en tant que designer sur le quartier de l’Elsau. En complément des enseignements de géographie sur «l’habiter et l’habiter mieux», et par des interventions ponctuelles, nous souhaitions donner des clés de compréhension aux élèves sur leur quartier et sa rénovation en cours afin de favoriser leur participation dans l’évolution de leur environnement. Cette démarche convoquait à la fois la conception et la réalisation de divers outils pédagogiques et l’animation de plusieurs ateliers d’éveil et de sensibilisation aux transformations du quartier de l’Elsau avec 3 classes de CM1 de l’école Léonard de Vinci. Dans cette collection d’outils on trouve notamment Le jeu du 6/6: un outils de discussion qui a pour but de se familiariser au vocabulaire et aux principes écologiques dans l’espace urbain tout en sensibilisant aux écogestes.
@@ -17,9 +17,9 @@
     </div>
     <div class="project__content">
       <div class="project__content-images">
-        <img class="project__content-image desktop" src="@/assets/images/project-page_01.png">
-        <img class="project__content-image" src="@/assets/images/project-page_02.png">
-        <img class="project__content-image" src="@/assets/images/project-page_03.png">
+        <nuxt-img class="project__content-image desktop" src="/images/project-page_01.png" />
+        <nuxt-img class="project__content-image" src="/images/project-page_02.png" />
+        <nuxt-img class="project__content-image" src="/images/project-page_03.png" />
       </div>
       <arrow-back class="mobile" />
     </div>

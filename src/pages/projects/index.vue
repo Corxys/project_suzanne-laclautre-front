@@ -3,60 +3,60 @@
     <div class="projects__content">
       <div class="projects__filter">
         <div class="projects__item">
-          <img class="projects__item-image" src="@/assets/images/category_graphism.png" alt="Dessin d'un crayon">
+          <nuxt-img class="projects__item-image" src="/images/category_graphism.png" alt="Dessin d'un crayon" />
         </div>
         <div class="projects__item">
-          <img class="projects__item-image" src="@/assets/images/category_edition.png" alt="Dessin d'un carnet avec une fleur sur la couverture">
+          <nuxt-img class="projects__item-image" src="/images/category_edition.png" alt="Dessin d'un carnet avec une fleur sur la couverture" />
         </div>
         <div class="projects__item">
-          <img class="projects__item-image" src="@/assets/images/category_workshop.png" alt="Dessin d'une paire de ciseaux">
+          <nuxt-img class="projects__item-image" src="/images/category_workshop.png" alt="Dessin d'une paire de ciseaux" />
         </div>
         <div class="projects__item">
-          <img class="projects__item-image" src="@/assets/images/category_illustration.png" alt="Dessin de deux cartes avec des formes abstraites">
+          <nuxt-img class="projects__item-image" src="/images/category_illustration.png" alt="Dessin de deux cartes avec des formes abstraites" />
         </div>
         <div class="projects__item">
-          <img class="projects__item-image" src="@/assets/images/category_tools.png" alt="Dessin d'une boîte rectangulaire ouverte">
+          <nuxt-img class="projects__item-image" src="/images/category_tools.png" alt="Dessin d'une boîte rectangulaire ouverte" />
         </div>
       </div>
       <div class="projects__list">
         <div class="projects__image">
           <nuxt-link to="/projet">
-            <img class="projects__image-src" src="@/assets/images/project_01.png" :alt="`Photo du projet ${ '' }`">
+            <nuxt-img class="projects__image-src" src="/images/project_01.png" :alt="`Photo du projet ${ '' }`" />
           </nuxt-link>
         </div>
         <div class="projects__image">
           <nuxt-link to="/projet">
-            <img class="projects__image-src" src="@/assets/images/project_02.png" :alt="`Photo du projet ${ '' }`">
+            <nuxt-img class="projects__image-src" src="/images/project_02.png" :alt="`Photo du projet ${ '' }`" />
           </nuxt-link>
         </div>
         <div class="projects__image">
           <nuxt-link to="/projet">
-            <img class="projects__image-src" src="@/assets/images/project_03.png" :alt="`Photo du projet ${ '' }`">
+            <nuxt-img class="projects__image-src" src="/images/project_03.png" :alt="`Photo du projet ${ '' }`" />
           </nuxt-link>
         </div>
         <div class="projects__image">
           <nuxt-link to="/projet">
-            <img class="projects__image-src" src="@/assets/images/project_04.png" :alt="`Photo du projet ${ '' }`">
+            <nuxt-img class="projects__image-src" src="/images/project_04.png" :alt="`Photo du projet ${ '' }`" />
           </nuxt-link>
         </div>
         <div class="projects__image">
           <nuxt-link to="/projet">
-            <img class="projects__image-src" src="@/assets/images/project_05.png" :alt="`Photo du projet ${ '' }`">
+            <nuxt-img class="projects__image-src" src="/images/project_05.png" :alt="`Photo du projet ${ '' }`" />
           </nuxt-link>
         </div>
         <div class="projects__image">
           <nuxt-link to="/projet">
-            <img class="projects__image-src" src="@/assets/images/project_06.png" :alt="`Photo du projet ${ '' }`">
+            <nuxt-img class="projects__image-src" src="/images/project_06.png" :alt="`Photo du projet ${ '' }`" />
           </nuxt-link>
         </div>
         <div class="projects__image">
           <nuxt-link to="/projet">
-            <img class="projects__image-src" src="@/assets/images/project_07.png" :alt="`Photo du projet ${ '' }`">
+            <nuxt-img class="projects__image-src" src="/images/project_07.png" :alt="`Photo du projet ${ '' }`" />
           </nuxt-link>
         </div>
         <div class="projects__image">
           <nuxt-link to="/projet">
-            <img class="projects__image-src" src="@/assets/images/project_08.png" :alt="`Photo du projet ${ '' }`">
+            <nuxt-img class="projects__image-src" src="/images/project_08.png" :alt="`Photo du projet ${ '' }`" />
           </nuxt-link>
         </div>
       </div>

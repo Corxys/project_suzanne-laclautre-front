@@ -7,13 +7,13 @@
         </p>
         <div class="contact__infos-lines">
           <div class="contact__infos-line">
-            <img class="contact__infos-icon" src="@/assets/images/contact_mail-icon.png" alt="Icône d'une enveloppe noire">
+            <nuxt-img class="contact__infos-icon" src="/icons/contact_mail.svg" alt="Icône d'une enveloppe noire" />
             <div class="contact__infos-text">
               suzanne.laclautre@gmail.com
             </div>
           </div>
           <div class="contact__infos-line">
-            <img class="contact__infos-icon" src="@/assets/images/contact_city-icon.png" alt="Icône d'un marqueur sur une carte">
+            <nuxt-img class="contact__infos-icon" src="/icons/contact_city.svg" alt="Icône d'un marqueur sur une carte" />
             <div class="contact__infos-text">
               Strasbourg
             </div>
@@ -21,8 +21,8 @@
         </div>
         <custom-button text="Télécharger mon CV" />
         <div class="contact__infos-socials">
-          <img class="contact__infos-social" src="@/assets/images/contact_instagram-icon.png" alt="Logo du réseau social Instagram">
-          <img class="contact__infos-social" src="@/assets/images/contact_linkedin-icon.png" alt="Logo du réseau professionnel LinkedIn">
+          <nuxt-img class="contact__infos-social" src="/icons/contact_instagram.svg" alt="Logo du réseau social Instagram" />
+          <nuxt-img class="contact__infos-social" src="/icons/contact_linkedin.svg" alt="Logo du réseau professionnel LinkedIn" />
         </div>
       </div>
       <nuxt-link class="contact__content-back" to="/">
@@ -118,6 +118,7 @@ export default {
       margin: 30px 0 40px 0;
     }
     &-social {
+      width: 25px;
       &:first-child {
         margin-bottom: 10px;
       }
