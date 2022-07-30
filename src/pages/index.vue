@@ -200,13 +200,13 @@ export default {
     &__category {
       margin: 0 20px 0 20px;
       min-width: 90px;
-      :nth-child(1) {
+      &:nth-child(1) {
         margin-left: 0;
       }
-      :nth-child(5) {
+      &:nth-child(5) {
         margin-right: 0;
       }
-      :nth-child(6) {
+      &:nth-child(6) {
         display: none;
       }
       &-image {
