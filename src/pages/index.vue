@@ -13,7 +13,6 @@
           <div class="header__category-title">
             Édition
           </div>
-          </nuxt-img>
         </nuxt-link>
         <nuxt-link class="header__category" to="/projets">
           <nuxt-img class="header__category-image" src="/images/category_workshop.png" alt="Dessin d'une paire de ciseaux" />

@@ -17,9 +17,9 @@
     </div>
     <div class="project__content">
       <div class="project__content-images">
-        <nuxt-img class="project__content-image desktop" src="/images/project-page_01.png" />
-        <nuxt-img class="project__content-image" src="/images/project-page_02.png" />
-        <nuxt-img class="project__content-image" src="/images/project-page_03.png" />
+        <nuxt-img class="project__content-image desktop" src="/images/project-page_01.png" alt="" />
+        <nuxt-img class="project__content-image" src="/images/project-page_02.png" alt="" />
+        <nuxt-img class="project__content-image" src="/images/project-page_03.png" alt="" />
       </div>
       <arrow-back class="mobile" />
     </div>
