@@ -68,11 +68,25 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/'
+    baseURL: process.env.API_URL || 'http://localhost:1337'
+  },
+
+  publicRuntimeConfig: {
+    apiURL: process.env.API_URL || 'http://localhost:1337',
+    emailJsServiceId: process.env.EMAILJS_SERVICE_ID,
+    emailJsTemplateId: process.env.EMAILJS_TEMPLATE_ID,
+    emailJsUserId: process.env.EMAILJS_USER_ID
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+  },
+
+  vue: {
+    config: {
+      productionTip: false,
+      devtools: true
+    }
   },
 
   server: {

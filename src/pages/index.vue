@@ -1,37 +1,37 @@
-<template>
+<template xmlns="http://www.w3.org/1999/html">
   <div class="container">
     <header class="header">
       <div class="header__categories">
-        <nuxt-link class="header__category" to="/projets">
+        <div class="header__category" @click="handleGetProjectsByCategory('Graphisme')">
           <nuxt-img class="header__category-image" src="/images/category_graphism.png" alt="Dessin d'un crayon" />
           <div class="header__category-title">
             Graphisme
           </div>
-        </nuxt-link>
-        <nuxt-link class="header__category" to="/projets">
+        </div>
+        <div class="header__category" @click="handleGetProjectsByCategory('Édition')">
           <nuxt-img class="header__category-image" src="/images/category_edition.png" alt="Dessin d'un carnet avec une fleur sur la couverture" />
           <div class="header__category-title">
             Édition
           </div>
-        </nuxt-link>
-        <nuxt-link class="header__category" to="/projets">
+        </div>
+        <div class="header__category" @click="handleGetProjectsByCategory('Ateliers')">
           <nuxt-img class="header__category-image" src="/images/category_workshop.png" alt="Dessin d'une paire de ciseaux" />
           <div class="header__category-title">
             Ateliers
           </div>
-        </nuxt-link>
-        <nuxt-link class="header__category" to="/projets">
+        </div>
+        <div class="header__category" @click="handleGetProjectsByCategory('Illustrations')">
           <nuxt-img class="header__category-image" src="/images/category_illustration.png" alt="Dessin de deux cartes avec des formes abstraites" />
           <div class="header__category-title">
             Illustrations
           </div>
-        </nuxt-link>
-        <nuxt-link class="header__category" to="/projets">
+        </div>
+        <div class="header__category" @click="handleGetProjectsByCategory('Dispositifs')">
           <nuxt-img class="header__category-image" src="/images/category_tools.png" alt="Dessin d'une boîte rectangulaire ouverte" />
           <div class="header__category-title">
             Dispositifs
           </div>
-        </nuxt-link>
+        </div>
         <div class="header__category mobile">
           <div class="header__scroll">
             <nuxt-img class="header__scroll-border" src="/images/scroll_border.png" alt="Scroll pour en voir plus" />
@@ -52,74 +52,74 @@
         <div class="section__content">
           <div class="section__projects">
             <div class="section__projects-line">
-              <div class="section__project">
-                <nuxt-link to="/projet">
-                  <nuxt-img class="section__project-image" src="/images/project_01.png" alt="Cartes de visite">
-                    <span class="section__project-text">
-                      Cartes de visite
-                      <br>
-                      2021
-                    </span>
-                  </nuxt-img>
-                </nuxt-link>
-              </div>
-              <div class="section__project">
-                <nuxt-link to="/projet">
-                  <nuxt-img class="section__project-image" src="/images/project_02.png" alt="Objet d'édition">
-                    <span class="section__project-text">
-                      Édition
-                      <br>
-                      2021
-                    </span>
-                  </nuxt-img>
-                </nuxt-link>
+              <div v-for="projectSpotlight in projectsSpotlight.slice(0, 2)" :key="projectSpotlight.id" class="section__project" @click="handleGetProject(projectSpotlight)">
+                <img class="section__project-image" :src="$config.apiURL + projectSpotlight.attributes.photos.data[0].attributes.url">
+                <span class="section__project-text">
+                  {{ projectSpotlight.attributes.titre }}
+                  <br>
+                  {{ projectSpotlight.attributes.annee }}
+                </span>
               </div>
             </div>
             <div class="section__projects-line">
-              <div class="section__project">
-                <nuxt-link to="/projet">
-                  <nuxt-img class="section__project-image" src="/images/project_03.png" alt="Carotte avec des feuilles vertes sur fond jaune et rose">
-                    <span class="section__project-text">
-                      Illustration
-                      <br>
-                      2021
-                    </span>
-                  </nuxt-img>
-                </nuxt-link>
-              </div>
-              <div class="section__project">
-                <nuxt-link to="/projet">
-                  <nuxt-img class="section__project-image" src="/images/project_04.png" alt="Badge jaune avec un casque de chantier dessiné dessus">
-                    <span class="section__project-text">
-                      Dispositifs
-                      <br>
-                      2021
-                    </span>
-                  </nuxt-img>
-                </nuxt-link>
+              <div v-for="projectSpotlight in projectsSpotlight.slice(2, 4)" :key="projectSpotlight.id" class="section__project" @click="handleGetProject(projectSpotlight)">
+                <img class="section__project-image" :src="$config.apiURL + projectSpotlight.attributes.photos.data[0].attributes.url">
+                <span class="section__project-text">
+                  {{ projectSpotlight.attributes.titre }}
+                  <br>
+                  {{ projectSpotlight.attributes.annee }}
+                </span>
               </div>
             </div>
           </div>
-        </div>
-        <div class="section__contact">
-          Mon travail t'intéresse ?
-          <nuxt-link class="section__contact--bold" to="/contact">
-            Contacte-moi !!
-          </nuxt-link>
+          <div class="section__contact">
+            Mon travail t'intéresse ?
+            <nuxt-link class="section__contact--bold" to="/contact">
+              Contacte-moi !!
+            </nuxt-link>
+          </div>
         </div>
       </section>
     </main>
     <footer class="footer">
       <div class="footer__text">
-        Crédits © {{ new Date().getFullYear() }}
+        Crédits © {{ new Date().getFullYear() }} | <nuxt-link class="footer__text-link" to="/mentions-legales">
+          Mentions légales
+        </nuxt-link>
       </div>
     </footer>
   </div>
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex'
+import slugify from 'slugify'
+
 export default {
-  name: 'HomePage'
+  name: 'HomePage',
+  computed: {
+    ...mapState({
+      projectsSpotlight: state => state.projects.projectsSpotlight
+    })
+  },
+  methods: {
+    ...mapMutations('projects', ['GET_PROJECT']),
+    ...mapMutations('projects', ['GET_PROJECTS_BY_CATEGORIES']),
+    slugifyTitle (title) {
+      const modifiedTitle = title.replace('_', '-').replace('&', '').replace('\'', '-').replace('/', '-')
+      return (slugify(modifiedTitle, {
+        lower: true
+      }))
+    },
+    handleGetProjectsByCategory (type) {
+      this.GET_PROJECTS_BY_CATEGORIES({ type })
+      this.$router.push('/projets')
+    },
+    handleGetProject (project) {
+      this.GET_PROJECT({ project })
+      this.$router.push(`/projet/${this.slugifyTitle(project.attributes.titre)}`)
+    }
+  }
 }
 </script>
 
@@ -157,6 +157,7 @@ export default {
     font-weight: 700;
     text-transform: lowercase;
     min-height: 150px;
+    cursor: pointer;
     &-image {
       width: 60%;
       max-width: 140px;
@@ -232,6 +233,7 @@ export default {
   padding: 0 30px;
   margin: 60px 0;
   &__content {
+    max-width: 1200px;
     width: 100%;
   }
   &__projects {
@@ -245,9 +247,11 @@ export default {
     }
   }
   &__project {
+    cursor: pointer;
     &-image {
       width: 100%;
       height: 100%;
+      max-height: 600px;
       object-fit: cover;
     }
     &-text {
@@ -312,6 +316,9 @@ export default {
     height: 100px;
     border-top: 1px solid $color-black;
     width: 70%;
+    &-link {
+      margin-left: 10px;
+    }
   }
 }
 
