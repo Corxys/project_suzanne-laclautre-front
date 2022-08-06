@@ -2,24 +2,24 @@
   <section class="project">
     <div class="project__header">
       <h2 class="project__header-title">
-        Le jeu du 6/6
+        {{ project.attributes.titre }}
       </h2>
       <h3 class="project__header-date">
-        2021
+        {{ project.attributes.annee }}
       </h3>
       <div class="project__header-image mobile">
-        <nuxt-img src="/images/project-page_01.png" alt="" />
+        <img :src="$config.apiURL + project.attributes.photos.data[0].attributes.url" alt="">
       </div>
       <p class="project__header-text">
-        Le projet à été réalisé dans le cadre d’un service civique au sein de l’association, en tant que designer sur le quartier de l’Elsau. En complément des enseignements de géographie sur «l’habiter et l’habiter mieux», et par des interventions ponctuelles, nous souhaitions donner des clés de compréhension aux élèves sur leur quartier et sa rénovation en cours afin de favoriser leur participation dans l’évolution de leur environnement. Cette démarche convoquait à la fois la conception et la réalisation de divers outils pédagogiques et l’animation de plusieurs ateliers d’éveil et de sensibilisation aux transformations du quartier de l’Elsau avec 3 classes de CM1 de l’école Léonard de Vinci. Dans cette collection d’outils on trouve notamment Le jeu du 6/6: un outils de discussion qui a pour but de se familiariser au vocabulaire et aux principes écologiques dans l’espace urbain tout en sensibilisant aux écogestes.
+        {{ project.attributes.description }}
       </p>
-      <arrow-back class="desktop" />
+      <div class="project__header-back" @click="$router.go(-1)">
+        <arrow-back class="desktop" />
+      </div>
     </div>
     <div class="project__content">
       <div class="project__content-images">
-        <nuxt-img class="project__content-image desktop" src="/images/project-page_01.png" alt="" />
-        <nuxt-img class="project__content-image" src="/images/project-page_02.png" alt="" />
-        <nuxt-img class="project__content-image" src="/images/project-page_03.png" alt="" />
+        <img v-for="(image, index) in project.attributes.photos.data" :key="image.id" :class="index === 0 ? 'project__content-image desktop' : 'project__content-image'" :src="$config.apiURL + image.attributes.url" alt="">
       </div>
       <arrow-back class="mobile" />
     </div>
@@ -27,8 +27,15 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
-  name: 'ProjectPage'
+  name: 'ProjectPage',
+  computed: {
+    ...mapState({
+      project: state => state.projects.project
+    })
+  }
 }
 </script>
 
@@ -48,7 +55,11 @@ export default {
       }
     }
     &-text {
+      white-space: pre-line;
       line-height: 1.5;
+    }
+    &-back {
+      cursor: pointer;
     }
   }
   &__content {
@@ -102,6 +113,6 @@ export default {
 
 <router>
 {
-  path: '/projet'
+  path: '/projet/:slug'
 }
 </router>

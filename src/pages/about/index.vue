@@ -6,9 +6,9 @@
         Suzanne est designeuse graphique et spécialisée dans la conception de dispositifs pédagogiques. Elle partage son temps entre une pratique d’un graphisme porteur de sens et des projets à visée pédagogique allant de la réalisation d’outils sur mesure à une démarche complète en passant par de l’animation d’ateliers pour différentes structures scolaires, associatives et culturelles.
       </p>
     </div>
-    <nuxt-link class="about__content-back" to="/">
+    <div class="about__content-back" @click="$router.go(-1)">
       <ArrowBack />
-    </nuxt-link>
+    </div>
   </section>
 </template>
 
@@ -68,6 +68,7 @@ export default {
       max-width: 425px;
     }
     &-back {
+      cursor: pointer;
       align-self: flex-start;
     }
   }

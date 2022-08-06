@@ -18,6 +18,7 @@ export default {
 
 <style scoped lang="scss">
 .back {
+  max-width: 120px;
   &__arrow {
     position: relative;
     top: 6px;
