@@ -1,7 +1,7 @@
-<template xmlns="http://www.w3.org/1999/html">
+<template>
   <div class="container">
     <header class="header">
-      <div class="header__categories">
+      <div v-gsap.from="{ opacity: 0, delay: 1 }" v-gsap.to="{ opacity: 1, delay: 1 }" class="header__categories">
         <div class="header__category" @click="handleGetProjectsByCategory('Graphisme')">
           <nuxt-img class="header__category-image" src="/images/category_graphism.png" alt="Dessin d'un crayon" />
           <div class="header__category-title">
@@ -39,7 +39,7 @@
           </div>
         </div>
       </div>
-      <div class="header__scroll desktop">
+      <div v-gsap.from="{ opacity: 0, delay: 1.5 }" v-gsap.to="{ opacity: 1, delay: 1.5 }" class="header__scroll desktop">
         <nuxt-img class="header__scroll-border" src="/images/scroll_border.png" alt="Scroll pour en voir plus" />
         <nuxt-img class="header__scroll-body" src="/images/scroll_body.png" alt="Illustration" />
       </div>
@@ -53,21 +53,21 @@
           <div class="section__projects">
             <div class="section__projects-line">
               <div v-for="projectSpotlight in projectsSpotlight.slice(0, 2)" :key="projectSpotlight.id" class="section__project" @click="handleGetProject(projectSpotlight)">
-                <img class="section__project-image" :src="$config.apiURL + projectSpotlight.attributes.photos.data[0].attributes.url">
+                <img class="section__project-image" :src="projectSpotlight.pictures[0].source" :alt="projectSpotlight.pictures[0].alt ? projectSpotlight.pictures[0].alt : ''">
                 <span class="section__project-text">
-                  {{ projectSpotlight.attributes.titre }}
+                  {{ projectSpotlight.title }}
                   <br>
-                  {{ projectSpotlight.attributes.annee }}
+                  {{ projectSpotlight.year }}
                 </span>
               </div>
             </div>
             <div class="section__projects-line">
               <div v-for="projectSpotlight in projectsSpotlight.slice(2, 4)" :key="projectSpotlight.id" class="section__project" @click="handleGetProject(projectSpotlight)">
-                <img class="section__project-image" :src="$config.apiURL + projectSpotlight.attributes.photos.data[0].attributes.url">
+                <img class="section__project-image" :src="projectSpotlight.pictures[0].source" :alt="projectSpotlight.pictures[0].alt ? projectSpotlight.pictures[0].alt : ''">
                 <span class="section__project-text">
-                  {{ projectSpotlight.attributes.titre }}
+                  {{ projectSpotlight.title }}
                   <br>
-                  {{ projectSpotlight.attributes.annee }}
+                  {{ projectSpotlight.year }}
                 </span>
               </div>
             </div>
@@ -117,8 +117,16 @@ export default {
     },
     handleGetProject (project) {
       this.GET_PROJECT({ project })
-      this.$router.push(`/projet/${this.slugifyTitle(project.attributes.titre)}`)
+      this.$router.push(`/projet/${this.slugifyTitle(project.title)}`)
     }
+  },
+  mounted () {
+    window.addEventListener('scroll', () => {
+      const scrollBorders = document.querySelectorAll('.header__scroll-border')
+      scrollBorders.forEach((scrollBorder) => {
+        scrollBorder.style.transform = 'rotate(' + window.scrollY / 2 + 'deg) transform: translate3d(0px, 0px, 0px)'
+      })
+    })
   }
 }
 </script>
@@ -176,10 +184,7 @@ export default {
     height: 100px;
     width: 100px;
     &-border {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      height: 100%;
       width: 100%;
     }
     &-body {
@@ -187,7 +192,7 @@ export default {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 70%;
+      width: 65%;
     }
   }
 }

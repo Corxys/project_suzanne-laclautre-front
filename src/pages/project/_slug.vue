@@ -2,16 +2,16 @@
   <section class="project">
     <div class="project__header">
       <h2 class="project__header-title">
-        {{ project.attributes.titre }}
+        {{ project.title }}
       </h2>
       <h3 class="project__header-date">
-        {{ project.attributes.annee }}
+        {{ project.year }}
       </h3>
       <div class="project__header-image mobile">
-        <img :src="$config.apiURL + project.attributes.photos.data[0].attributes.url" alt="">
+        <img :src="project.pictures[0].source" :alt="project.pictures[0].alt ? project.pictures[0].alt : ''">
       </div>
       <p class="project__header-text">
-        {{ project.attributes.description }}
+        {{ project.description }}
       </p>
       <div class="project__header-back" @click="$router.go(-1)">
         <arrow-back class="desktop" />
@@ -19,7 +19,7 @@
     </div>
     <div class="project__content">
       <div class="project__content-images">
-        <img v-for="(image, index) in project.attributes.photos.data" :key="image.id" :class="index === 0 ? 'project__content-image desktop' : 'project__content-image'" :src="$config.apiURL + image.attributes.url" alt="">
+        <img v-for="(image, index) in project.pictures" :key="image.id" :class="index === 0 ? 'project__content-image desktop' : 'project__content-image'" :src="image.source" :alt="image.alt ? image.alt : ''">
       </div>
       <arrow-back class="mobile" />
     </div>

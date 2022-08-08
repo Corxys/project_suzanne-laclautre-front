@@ -20,7 +20,7 @@
       </div>
       <div class="projects__list">
         <div v-for="project in (activeProjects.length === 0 ? projects : activeProjects)" :key="project.id" class="projects__image" @click="handleGetProject(project)">
-          <img :id="`project-${ project.id }`" class="projects__image-src" :src="$config.apiURL + project.attributes.photos.data[0].attributes.url">
+          <img :id="`project-${ project.id }`" class="projects__image-src" :src="project.pictures[0].source">
         </div>
       </div>
     </div>
@@ -50,7 +50,7 @@ export default {
     },
     handleGetProject (project) {
       this.GET_PROJECT({ project })
-      this.$router.push(`/projet/${this.slugifyTitle(project.attributes.titre)}`)
+      this.$router.push(`/projet/${this.slugifyTitle(project.title)}`)
     }
   }
 }
