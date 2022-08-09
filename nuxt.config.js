@@ -54,7 +54,9 @@ export default {
     // See: https://www.npmjs.com/package/@nuxtjs/router-extras
     '@nuxtjs/router-extras',
     // See: https://www.npmjs.com/package/@nuxtjs/svg
-    '@nuxtjs/svg'
+    '@nuxtjs/svg',
+    // See: https://www.npmjs.com/package/nuxt-gsap-module
+    'nuxt-gsap-module'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules

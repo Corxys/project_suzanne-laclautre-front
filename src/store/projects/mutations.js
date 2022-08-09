@@ -1,7 +1,7 @@
 export default {
   INIT_DATA (state, payload) {
     state.projects = payload.data
-    state.projectsSpotlight = state.projects.filter(project => project.attributes.une === true)
+    state.projectsSpotlight = state.projects.filter(project => project.spotlight === true)
   },
   GET_PROJECTS_BY_CATEGORIES (state, payload) {
     const filteredProjects = []
@@ -15,8 +15,8 @@ export default {
       state.activeCategory = payload.type
       const filteredProjects = []
       state.projects.forEach((project) => {
-        project.attributes.tags.data.forEach((tag) => {
-          if (tag.attributes.name === payload.type) {
+        project.tags.forEach((tag) => {
+          if (tag.name === payload.type) {
             filteredProjects.push(project)
           }
         })

@@ -1,5 +1,5 @@
 <template>
-  <nav class="nav">
+  <nav v-gsap.from="{ opacity: 0, delay: 0.5 }" v-gsap.to="{ opacity: 1, delay: 0.5 }" class="nav">
     <div class="nav__logo">
       <logo />
       <div v-show="$route.path === '/' || $route.path === '/projets'" class="nav__intro">
