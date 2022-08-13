@@ -13,9 +13,7 @@
       <p class="project__header-text">
         {{ project.description }}
       </p>
-      <div class="project__header-back" @click="$router.go(-1)">
-        <arrow-back class="desktop" />
-      </div>
+      <arrow-back class="desktop" />
     </div>
     <div class="project__content">
       <div class="project__content-images">
@@ -57,9 +55,6 @@ export default {
     &-text {
       white-space: pre-line;
       line-height: 1.5;
-    }
-    &-back {
-      cursor: pointer;
     }
   }
   &__content {

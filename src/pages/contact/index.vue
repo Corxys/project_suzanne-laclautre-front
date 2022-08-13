@@ -33,9 +33,7 @@
           </a>
         </div>
       </div>
-      <div class="contact__infos-back" @click="$router.go(-1)">
-        <ArrowBack />
-      </div>
+      <arrow-back />
     </div>
     <div class="contact__form-wrapper">
       <form ref="form" class="contact__form" @submit.prevent="sendEmail">
@@ -118,9 +116,6 @@ export default {
     align-items: center;
     background-color: $color-secondary;
     padding: 100px 30px 40px 30px;
-    &-back {
-      align-self: flex-start;
-    }
   }
   &__infos {
     flex-grow: 1;
@@ -165,10 +160,6 @@ export default {
       &:first-child {
         margin-bottom: 10px;
       }
-    }
-    &-back {
-      cursor: pointer;
-      align-self: flex-start;
     }
   }
   &__form {

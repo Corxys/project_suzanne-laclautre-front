@@ -2,36 +2,13 @@
   <div class="container">
     <header class="header">
       <div v-gsap.from="{ opacity: 0, delay: 1 }" v-gsap.to="{ opacity: 1, delay: 1 }" class="header__categories">
-        <div class="header__category" @click="handleGetProjectsByCategory('Graphisme')">
-          <nuxt-img class="header__category-image" src="/images/category_graphism.png" alt="Dessin d'un crayon" />
-          <div class="header__category-title">
-            Graphisme
-          </div>
-        </div>
-        <div class="header__category" @click="handleGetProjectsByCategory('Édition')">
-          <nuxt-img class="header__category-image" src="/images/category_edition.png" alt="Dessin d'un carnet avec une fleur sur la couverture" />
-          <div class="header__category-title">
-            Édition
-          </div>
-        </div>
-        <div class="header__category" @click="handleGetProjectsByCategory('Ateliers')">
-          <nuxt-img class="header__category-image" src="/images/category_workshop.png" alt="Dessin d'une paire de ciseaux" />
-          <div class="header__category-title">
-            Ateliers
-          </div>
-        </div>
-        <div class="header__category" @click="handleGetProjectsByCategory('Illustrations')">
-          <nuxt-img class="header__category-image" src="/images/category_illustration.png" alt="Dessin de deux cartes avec des formes abstraites" />
-          <div class="header__category-title">
-            Illustrations
-          </div>
-        </div>
-        <div class="header__category" @click="handleGetProjectsByCategory('Dispositifs')">
-          <nuxt-img class="header__category-image" src="/images/category_tools.png" alt="Dessin d'une boîte rectangulaire ouverte" />
-          <div class="header__category-title">
-            Dispositifs
-          </div>
-        </div>
+        <projects-category
+          v-for="category of categories"
+          :key="category.id"
+          :data="category"
+          :redirect="true"
+          :show-title="true"
+        />
         <div class="header__category mobile">
           <div class="header__scroll">
             <nuxt-img class="header__scroll-border" src="/images/scroll_border.png" alt="Scroll pour en voir plus" />
@@ -52,24 +29,10 @@
         <div class="section__content">
           <div class="section__projects">
             <div class="section__projects-line">
-              <div v-for="projectSpotlight in projectsSpotlight.slice(0, 2)" :key="projectSpotlight.id" class="section__project" @click="handleGetProject(projectSpotlight)">
-                <img class="section__project-image" :src="projectSpotlight.pictures[0].source" :alt="projectSpotlight.pictures[0].alt ? projectSpotlight.pictures[0].alt : ''">
-                <span class="section__project-text">
-                  {{ projectSpotlight.title }}
-                  <br>
-                  {{ projectSpotlight.year }}
-                </span>
-              </div>
+              <project v-for="projectSpotlight in projectsSpotlight.slice(0, 2)" :key="projectSpotlight.id" :data="projectSpotlight" />
             </div>
             <div class="section__projects-line">
-              <div v-for="projectSpotlight in projectsSpotlight.slice(2, 4)" :key="projectSpotlight.id" class="section__project" @click="handleGetProject(projectSpotlight)">
-                <img class="section__project-image" :src="projectSpotlight.pictures[0].source" :alt="projectSpotlight.pictures[0].alt ? projectSpotlight.pictures[0].alt : ''">
-                <span class="section__project-text">
-                  {{ projectSpotlight.title }}
-                  <br>
-                  {{ projectSpotlight.year }}
-                </span>
-              </div>
+              <project v-for="projectSpotlight in projectsSpotlight.slice(2, 4)" :key="projectSpotlight.id" :data="projectSpotlight" />
             </div>
           </div>
           <div class="section__contact">
@@ -92,53 +55,53 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex'
-import slugify from 'slugify'
+import { mapState } from 'vuex'
+
+import { categories } from '../data/categories'
 
 export default {
   name: 'HomePage',
+  data () {
+    return {
+      categories
+    }
+  },
   computed: {
     ...mapState({
+      activeCategory: state => state.projects.activeCategory,
       projectsSpotlight: state => state.projects.projectsSpotlight
     })
   },
-  methods: {
-    ...mapMutations('projects', ['GET_PROJECT']),
-    ...mapMutations('projects', ['GET_PROJECTS_BY_CATEGORIES']),
-    slugifyTitle (title) {
-      const modifiedTitle = title.replace('_', '-').replace('&', '').replace('\'', '-').replace('/', '-')
-      return (slugify(modifiedTitle, {
-        lower: true
-      }))
-    },
-    handleGetProjectsByCategory (type) {
-      this.GET_PROJECTS_BY_CATEGORIES({ type })
-      this.$router.push('/projets')
-    },
-    handleGetProject (project) {
-      this.GET_PROJECT({ project })
-      this.$router.push(`/projet/${this.slugifyTitle(project.title)}`)
-    }
-  },
   mounted () {
-    window.addEventListener('scroll', () => {
-      const scrollBorders = document.querySelectorAll('.header__scroll-border')
-      scrollBorders.forEach((scrollBorder) => {
-        scrollBorder.style.transform = 'rotate(' + window.scrollY / 2 + 'deg) transform: translate3d(0px, 0px, 0px)'
+    const scrollBorders = document.querySelectorAll('.header__scroll-border')
+    scrollBorders.forEach((scrollBorder) => {
+      window.addEventListener('scroll', () => {
+        scrollBorder.style.transform = 'rotate(' + window.scrollY / 2 + 'deg) translate3d(0px, 0px, 0px)'
       })
+    })
+  },
+  beforeMount () {
+    const vh = window.innerHeight / 100
+    document.documentElement.style.setProperty('--vh', `${vh}px`)
+    window.addEventListener('resize', () => {
+      const vh = window.innerHeight / 100
+      document.documentElement.style.setProperty('--vh', `${vh}px`)
     })
   }
 }
 </script>
 
 <style scoped lang="scss">
+:root {
+  --vh: 1vh;
+}
+
 .header {
   position: relative;
   display: flex;
   justify-content: center;
-  padding: 146px 0 50px 0;
-  height: calc(100vh - 90px);
   background-image: linear-gradient(90deg, $color-primary 50%, $color-secondary 50%);
+  padding: 0 0 30px 0;
   &:after {
     content: '';
     position: absolute;
@@ -151,31 +114,27 @@ export default {
   &__categories {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
     flex-wrap: wrap;
+    padding: 146px 0 30px 0;
+    height: calc(var(--vh, 1vh) * 100);
   }
-
   &__category {
-    z-index: 5;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 50%;
-    font-weight: 700;
-    text-transform: lowercase;
-    min-height: 150px;
-    cursor: pointer;
-    &-image {
-      width: 60%;
-      max-width: 140px;
-      margin-bottom: 10px;
+    height: calc(100% / 3);
+  }
+  ::v-deep .category {
+    width: 50%;
+    height: calc(100% / 3);
+    &__image {
+      height: 140px;
+      width: 140px;
     }
-    &:last-child {
-      justify-self: flex-start;
-    }
-    &-title {
-      max-width: 120px;
+    &__background {
+      background-color: $color-white;
     }
   }
   &__scroll {
@@ -206,21 +165,17 @@ export default {
     &__categories {
       align-items: center;
       flex-wrap: nowrap;
+      width: 100%;
+      max-width: 900px;
+      padding: 108px 0 65px 0;
     }
     &__category {
-      margin: 0 20px 0 20px;
-      min-width: 90px;
-      &:nth-child(1) {
-        margin-left: 0;
-      }
-      &:nth-child(5) {
-        margin-right: 0;
-      }
-      &:nth-child(6) {
-        display: none;
-      }
-      &-image {
-        width: 100%;
+      display: none;
+    }
+    ::v-deep .category {
+      &__image {
+        height: auto;
+        width: auto;
       }
     }
     &__scroll {
@@ -251,16 +206,14 @@ export default {
       display: flex;
     }
   }
-  &__project {
-    cursor: pointer;
-    &-image {
+  ::v-deep .project {
+    position: relative;
+    max-width: 50%;
+    &__image {
       width: 100%;
       height: 100%;
       max-height: 600px;
       object-fit: cover;
-    }
-    &-text {
-      display: none;
     }
   }
   &__contact {
@@ -268,7 +221,7 @@ export default {
     flex-direction: column;
     align-items: center;
     &--bold {
-      margin-top: 3px;
+      margin-top: 7px;
       font-weight: 700;
     }
   }
@@ -288,23 +241,8 @@ export default {
         }
       }
     }
-    &__project {
+    ::v-deep .project {
       margin: 30px;
-      &-image {
-        object-fit: scale-down;
-      }
-      &:nth-child(1) {
-        object-position: top right;
-      }
-      &:nth-child(2) {
-        object-position: bottom left;
-      }
-      &:nth-child(3) {
-        object-position: top right;
-      }
-      &:nth-child(4) {
-        object-position: bottom left;
-      }
     }
   }
 }
@@ -320,7 +258,7 @@ export default {
     align-items: center;
     height: 100px;
     border-top: 1px solid $color-black;
-    width: 70%;
+    width: 80%;
     &-link {
       margin-left: 10px;
     }
