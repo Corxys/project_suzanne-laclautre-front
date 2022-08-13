@@ -1,5 +1,5 @@
 <template>
-  <div class="back">
+  <div class="back" @click="$router.go(-1)">
     <div class="back__arrow">
       <div class="back__arrow-body" />
       <div class="back__arrow-tip" />
@@ -18,7 +18,9 @@ export default {
 
 <style scoped lang="scss">
 .back {
+  cursor: pointer;
   max-width: 120px;
+  align-self: flex-start;
   &__arrow {
     position: relative;
     top: 6px;
