@@ -36,7 +36,7 @@ export default {
     }
   },
   methods: {
-    ...mapMutations('projects', ['GET_PROJECTS_BY_CATEGORY']),
+    ...mapMutations('app', ['GET_PROJECTS_BY_CATEGORY']),
     getProjectsByCategory (categoryName, redirect) {
       this.GET_PROJECTS_BY_CATEGORY({ name: categoryName })
       if (redirect) { this.$router.push('/projets') }
@@ -47,7 +47,7 @@ export default {
 
 <style scoped lang="scss">
 .category {
-  cursor: pointer;
+  //cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -78,8 +78,8 @@ export default {
     border-radius: 50%;
     transition: all 200ms ease-in-out;
     &.active {
-      width: 85%;
-      height: 85%;
+      width: 100%;
+      height: 100%;
     }
   }
 }
@@ -88,8 +88,8 @@ export default {
   .category {
     &:hover {
       .category__background {
-        width: 85%;
-        height: 85%;
+        width: 100%;
+        height: 100%;
       }
     }
   }

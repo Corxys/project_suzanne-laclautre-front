@@ -2,7 +2,7 @@
   <div class="projects">
     <div class="projects__content">
       <div class="projects__filter">
-        <projects-category
+        <category
           v-for="category of categories"
           :key="category.id"
           class="projects__category"
@@ -33,9 +33,9 @@ export default {
   },
   computed: {
     ...mapState({
-      projects: state => state.projects.projects,
-      activeProjects: state => state.projects.activeProjects,
-      activeCategory: state => state.projects.activeCategory
+      projects: state => state.app.projects,
+      activeProjects: state => state.app.projectsByCategory,
+      activeCategory: state => state.app.activeCategory
     })
   }
 }
@@ -55,13 +55,11 @@ export default {
     margin-bottom: 50px;
     width: 100%;
   }
-  ::v-deep .category {
-    &__background {
-      background-color: $color-secondary;
-      &.active {
-        background-color: $color-primary;
-      }
-    }
+  :deep(.category__background) {
+    background: radial-gradient(circle at center, $color-secondary 10%, $color-secondary-gradient 72%);
+  }
+  :deep(.category__background.active) {
+    background: radial-gradient(circle at center, $color-primary 10%, $color-primary-gradient 72%);
   }
   &__item {
     margin-bottom: 30px;

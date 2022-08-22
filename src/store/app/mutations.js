@@ -1,13 +1,18 @@
 export default {
   INIT_DATA (state, payload) {
-    state.projects = payload.data
-    state.projectsSpotlight = state.projects.filter(project => project.spotlight === true)
+    state.projects = payload.projects
+    state.errorMessage = ''
+  },
+  DISPLAY_ERROR_MESSAGE (state, payload) {
+    state.errorMessage = payload.message
+  },
+  UPDATE_CURSOR_STUCK (state, payload) {
+    state.cursorIsStuck = payload.bool
   },
   GET_PROJECTS_BY_CATEGORY (state, payload) {
-    const filteredProjects = []
     // if the user clicks on the same category as the previous one, the state is cleared
     if (state.activeCategory === payload.name) {
-      state.activeProjects = []
+      state.projectsByCategory = []
       state.activeCategory = ''
     }
     // if he clicks on another category, we change it and fill the state
@@ -21,7 +26,7 @@ export default {
           }
         })
       })
-      state.activeProjects = filteredProjects
+      state.projectsByCategory = filteredProjects
     }
   },
   GET_PROJECT (state, payload) {

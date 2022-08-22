@@ -21,7 +21,7 @@
             </div>
           </div>
         </div>
-        <a href="" target="_blank">
+        <a href="https://drive.google.com/file/d/15cl-6CuGALKLYwWCvu2whIDCAntoQHvQ/view" target="_blank">
           <custom-button text="Télécharger mon CV" />
         </a>
         <div class="contact__infos-socials">
@@ -187,6 +187,7 @@ export default {
       min-height: 38px;
       padding: 0 20px;
       border: 1px solid $color-black;
+      cursor: none;
     }
     textarea {
       vertical-align: top;
@@ -197,9 +198,11 @@ export default {
       padding: 20px;
       width: 100%;
       resize: vertical;
+      cursor: none;
     }
     input[type=submit] {
       text-align: center;
+      cursor: none;
     }
     &-message {
       position: absolute;

@@ -1,5 +1,6 @@
 <template>
-  <section class="project">
+  <section v-if="project" class="project">
+    <!--    {{ project }}-->
     <div class="project__header">
       <h2 class="project__header-title">
         {{ project.title }}
@@ -8,7 +9,7 @@
         {{ project.year }}
       </h3>
       <div class="project__header-image mobile">
-        <img :src="project.pictures[0].source" :alt="project.pictures[0].alt ? project.pictures[0].alt : ''">
+        <img v-if="project.pictures" :src="project.pictures[0].source" :alt="project.pictures[0].alt ? project.pictures[0].alt : ''">
       </div>
       <p class="project__header-text">
         {{ project.description }}
@@ -16,7 +17,7 @@
       <arrow-back class="desktop" />
     </div>
     <div class="project__content">
-      <div class="project__content-images">
+      <div v-if="project.pictures" class="project__content-images">
         <img v-for="(image, index) in project.pictures" :key="image.id" :class="index === 0 ? 'project__content-image desktop' : 'project__content-image'" :src="image.source" :alt="image.alt ? image.alt : ''">
       </div>
       <arrow-back class="mobile" />
@@ -31,7 +32,7 @@ export default {
   name: 'ProjectPage',
   computed: {
     ...mapState({
-      project: state => state.projects.project
+      project: state => state.app.project
     })
   }
 }

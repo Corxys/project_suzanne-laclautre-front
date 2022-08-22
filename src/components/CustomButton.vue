@@ -13,6 +13,7 @@ export default {
 
 <style scoped lang="scss">
 .button {
+  cursor: none;
   position: relative;
   font-size: 13px;
   font-weight: 700;

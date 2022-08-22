@@ -1,38 +1,39 @@
+const url = '/api/projects?populate[pictures][populate]=%2A&populate[tags][populate]=%2A'
+
 export const actions = {
   async nuxtServerInit (context) {
-    await this.$axios.get('/api/projects?populate[pictures][populate]=%2A&populate[tags][populate]=%2A')
+    await this.$axios.get(url)
       .then((response) => {
         const projects = []
         response.data.data.forEach((item) => {
-          const projectObject = {}
-          projectObject.id = item.id
-          projectObject.title = item.attributes.title
-          projectObject.year = item.attributes.year
-          projectObject.description = item.attributes.description
-          projectObject.spotlight = item.attributes.spotlight
-          projectObject.pictures = []
+          const project = {
+            id: item.id,
+            title: item.attributes.title,
+            year: item.attributes.year,
+            description: item.attributes.description,
+            spotlight: item.attributes.spotlight,
+            pictures: [],
+            tags: []
+          }
           item.attributes.pictures.forEach((picture) => {
-            const pictureObject = {
+            project.pictures.push({
               id: picture.id,
               alt: picture.alt,
               source: picture.source.data.attributes.url
-            }
-            projectObject.pictures.push(pictureObject)
+            })
           })
-          projectObject.tags = []
           item.attributes.tags.data.forEach((tag) => {
-            const tagObject = {
+            project.tags.push({
               id: tag.id,
               name: tag.attributes.name
-            }
-            projectObject.tags.push(tagObject)
+            })
           })
-          projects.push(projectObject)
+          projects.push(project)
         })
-        context.commit('projects/INIT_DATA', { data: projects })
+        context.commit('app/INIT_DATA', { projects })
       })
-      .catch((error) => {
-        console.log(error)
+      .catch(() => {
+        context.commit('app/DISPLAY_ERROR_MESSAGE', { message: 'Les données n\'ont pas pu êtres chargées.' })
       })
   }
 }
