@@ -1,25 +1,20 @@
 <template>
   <div class="container">
     <header class="header">
-      <div v-gsap.from="{ opacity: 0, delay: 1 }" v-gsap.to="{ opacity: 1, delay: 1 }" class="header__categories">
-        <projects-category
-          v-for="category of categories"
-          :key="category.id"
-          :data="category"
-          :redirect="true"
-          :show-title="true"
-        />
+      <div ref="categories" class="header__categories">
+        <category v-for="category of categories" :key="category.id" :data="category" :redirect="true" :show-title="true" />
         <div class="header__category mobile">
-          <div class="header__scroll">
+          <div ref="scroll" class="header__scroll">
             <nuxt-img class="header__scroll-border" src="/images/scroll_border.png" alt="Scroll pour en voir plus" />
             <nuxt-img class="header__scroll-body" src="/images/scroll_body.png" alt="Illustration" />
           </div>
         </div>
       </div>
-      <div v-gsap.from="{ opacity: 0, delay: 1.5 }" v-gsap.to="{ opacity: 1, delay: 1.5 }" class="header__scroll desktop">
+      <div ref="scroll" class="header__scroll desktop">
         <nuxt-img class="header__scroll-border" src="/images/scroll_border.png" alt="Scroll pour en voir plus" />
         <nuxt-img class="header__scroll-body" src="/images/scroll_body.png" alt="Illustration" />
       </div>
+      <div ref="background" class="header__background" />
     </header>
     <main class="main">
       <section class="section">
@@ -29,10 +24,10 @@
         <div class="section__content">
           <div class="section__projects">
             <div class="section__projects-line">
-              <project v-for="projectSpotlight in projectsSpotlight.slice(0, 2)" :key="projectSpotlight.id" :data="projectSpotlight" />
+              <project v-for="project in projects.filter(project => project.spotlight === true).slice(0, 2)" :key="project.id" :data="project" />
             </div>
             <div class="section__projects-line">
-              <project v-for="projectSpotlight in projectsSpotlight.slice(2, 4)" :key="projectSpotlight.id" :data="projectSpotlight" />
+              <project v-for="project in projects.filter(project => project.spotlight === true).slice(2, 4)" :key="project.id" :data="project" />
             </div>
           </div>
           <div class="section__contact">
@@ -44,17 +39,11 @@
         </div>
       </section>
     </main>
-    <footer class="footer">
-      <div class="footer__text">
-        Crédits © {{ new Date().getFullYear() }} | <nuxt-link class="footer__text-link" to="/mentions-legales">
-          Mentions légales
-        </nuxt-link>
-      </div>
-    </footer>
   </div>
 </template>
 
 <script>
+import gsap from 'gsap'
 import { mapState } from 'vuex'
 
 import { categories } from '../data/categories'
@@ -63,16 +52,28 @@ export default {
   name: 'HomePage',
   data () {
     return {
-      categories
+      categories,
+      visitSession: true
     }
   },
   computed: {
     ...mapState({
-      activeCategory: state => state.projects.activeCategory,
-      projectsSpotlight: state => state.projects.projectsSpotlight
+      projects: state => state.app.projects,
+      activeCategory: state => state.projects.activeCategory
     })
   },
   mounted () {
+    // const tween = gsap.to(this.$refs.background, { backgroundImage: 'linear-gradient(0deg, #FCFAF3 0%, #FCFAF300 20%)', duration: 1, delay: 1 })
+    // tween.invalidate()
+    // const timelineBackground = new gsap.timeline({ repeatRefresh: true })
+    // timelineBackground.to(this.$refs.background, { backgroundImage: 'linear-gradient(0deg, #FCFAF3 0%, #FCFAF300 20%)', duration: 1, delay: 1 })
+    // const timelineCategories = new gsap.timeline({ repeatRefresh: true })
+    // timelineCategories.to(this.$refs.categories, { opacity: 1, delay: 2.5 })
+    // const scrolls = document.querySelectorAll('.header__scroll')
+    // scrolls.forEach((scroll) => {
+    //   const timelineScroll = new gsap.timeline({ repeatRefresh: true })
+    //   timelineScroll.to(scroll, { opacity: 1, delay: 2.5 })
+    // })
     const scrollBorders = document.querySelectorAll('.header__scroll-border')
     scrollBorders.forEach((scrollBorder) => {
       window.addEventListener('scroll', () => {
@@ -100,16 +101,16 @@ export default {
   position: relative;
   display: flex;
   justify-content: center;
-  background-image: linear-gradient(90deg, $color-primary 50%, $color-secondary 50%);
   padding: 0 0 30px 0;
-  &:after {
-    content: '';
+  background-image: linear-gradient(90deg, $color-primary 50%, $color-secondary 50%);
+  &__background {
+    z-index: 5;
     position: absolute;
     left: 0;
     bottom: 0;
     width: 100%;
-    height: 20%;
-    background-image: linear-gradient(0deg, $color-white 10%, #ffffff00 100%);
+    height: 100%;
+    background-image: linear-gradient(0deg, #FCFAF3 0%, #FCFAF300 20%);
   }
   &__categories {
     display: flex;
@@ -126,19 +127,19 @@ export default {
     width: 50%;
     height: calc(100% / 3);
   }
-  ::v-deep .category {
+  :deep(.category) {
     width: 50%;
     height: calc(100% / 3);
-    &__image {
+  }
+  :deep(.category__image) {
       height: 140px;
       width: 140px;
-    }
-    &__background {
-      background-color: $color-white;
-    }
+  }
+  :deep(.category__background) {
+    background: radial-gradient(circle at center, rgba(252,250,243,1) 10%, rgba(252,250,243,0) 72%);
   }
   &__scroll {
-    z-index: 5;
+    z-index: 10;
     position: relative;
     height: 100px;
     width: 100px;
@@ -172,11 +173,9 @@ export default {
     &__category {
       display: none;
     }
-    ::v-deep .category {
-      &__image {
-        height: auto;
-        width: auto;
-      }
+    :deep(.category__image) {
+      height: auto;
+      width: auto;
     }
     &__scroll {
       position: absolute;
@@ -206,15 +205,15 @@ export default {
       display: flex;
     }
   }
-  ::v-deep .project {
+  :deep(.project) {
     position: relative;
     max-width: 50%;
-    &__image {
-      width: 100%;
-      height: 100%;
-      max-height: 600px;
-      object-fit: cover;
-    }
+  }
+  :deep(.project__image) {
+    width: 100%;
+    height: 100%;
+    max-height: 600px;
+    object-fit: cover;
   }
   &__contact {
     display: flex;
@@ -241,35 +240,8 @@ export default {
         }
       }
     }
-    ::v-deep .project {
+    :deep(.project) {
       margin: 30px;
-    }
-  }
-}
-
-.footer {
-  display: flex;
-  justify-content: center;
-  padding: 0 30px;
-  text-align: center;
-  &__text {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100px;
-    border-top: 1px solid $color-black;
-    width: 80%;
-    &-link {
-      margin-left: 10px;
-    }
-  }
-}
-
-@media (min-width: 768px) {
-  // RESPONSIVE FOR THE FOOTER
-  .footer {
-    &__text {
-      width: 50%;
     }
   }
 }

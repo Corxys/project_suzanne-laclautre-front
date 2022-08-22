@@ -18,7 +18,6 @@ export default {
 
 <style scoped lang="scss">
 .back {
-  cursor: pointer;
   max-width: 120px;
   align-self: flex-start;
   &__arrow {

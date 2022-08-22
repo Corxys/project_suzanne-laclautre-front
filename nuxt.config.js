@@ -12,7 +12,7 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      { hid: 'description', name: 'description', content: 'Designeuse graphique et conceptrice d\'outils pédagogiques.' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
@@ -24,6 +24,8 @@ export default {
     ]
   },
 
+  loading: '~/components/LoadingScreen.vue',
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     // See: https://nicolas-cusan.github.io/destyle.css/
@@ -33,6 +35,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    { src: '~/plugins/vuex-persist.js', ssr: false }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -54,9 +57,7 @@ export default {
     // See: https://www.npmjs.com/package/@nuxtjs/router-extras
     '@nuxtjs/router-extras',
     // See: https://www.npmjs.com/package/@nuxtjs/svg
-    '@nuxtjs/svg',
-    // See: https://www.npmjs.com/package/nuxt-gsap-module
-    'nuxt-gsap-module'
+    '@nuxtjs/svg'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules

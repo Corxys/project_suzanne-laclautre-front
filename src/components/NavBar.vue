@@ -1,5 +1,5 @@
 <template>
-  <nav v-gsap.from="{ opacity: 0, delay: 0.5 }" v-gsap.to="{ opacity: 1, delay: 0.5 }" class="nav">
+  <nav ref="navbar" class="nav">
     <div class="nav__logo">
       <logo />
       <div v-show="$route.path === '/' || $route.path === '/projets'" class="nav__intro">
@@ -18,8 +18,19 @@
 </template>
 
 <script>
+// import gsap from 'gsap'
+
 export default {
   name: 'NavBarComponent'
+  // mounted () {
+  //   gsap.to(this.$refs.navbar, {
+  //     opacity: 1,
+  //     delay: 2.5,
+  //     onRefresh: () => {
+  //
+  //     }
+  //   })
+  // }
 }
 </script>
 

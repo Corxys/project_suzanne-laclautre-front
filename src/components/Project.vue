@@ -11,7 +11,9 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapMutations, mapState } from 'vuex'
+
+import gsap from 'gsap'
 
 import { slugifyTitle } from '../utils/slugifyTitle'
 
@@ -31,8 +33,15 @@ export default {
       showToolkit: false
     }
   },
+  computed: {
+    ...mapState({
+      cursorIsStuck: state => state.app.cursorIsStuck,
+      scrollHeight: state => state.app.scrollHeight
+    })
+  },
   methods: {
-    ...mapMutations('projects', ['GET_PROJECT']),
+    ...mapMutations('app', ['GET_PROJECT']),
+    ...mapMutations('app', ['UPDATE_CURSOR_STUCK']),
     getProject (project) {
       this.GET_PROJECT({ project })
       this.$router.push(`/projet/${slugifyTitle(project.title)}`)
@@ -50,7 +59,7 @@ export default {
 
 <style scoped lang="scss">
 .project {
-  cursor: pointer;
+  //cursor: pointer;
   position: relative;
   &__image {
     display: block;
