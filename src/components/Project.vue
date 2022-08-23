@@ -1,6 +1,6 @@
 <template>
   <div class="project" @click="getProject(data)" @mouseenter="showToolkit = true" @mousemove="moveToolkit" @mouseleave="showToolkit = false">
-    <img class="project__image" :src="data.pictures[0].source" :data="data.pictures[0].alt !== '' ? data.pictures[0].alt : ''">
+    <img class="project__image" :src="data.pictures[0].srcLarge ? data.pictures[0].srcLarge : data.pictures[0].srcMedium ? data.pictures[0].srcMedium : data.pictures[0].srcSmall ? data.pictures[0].srcSmall : '/'" :data="data.pictures[0].alt !== '' ? data.pictures[0].alt : ''">
     <div ref="toolkit" class="project__text" :class="{ active: showToolkit }">
       <span class="project__text--bold">
         {{ data.title }}
@@ -11,9 +11,7 @@
 </template>
 
 <script>
-import { mapMutations, mapState } from 'vuex'
-
-import gsap from 'gsap'
+import { mapMutations } from 'vuex'
 
 import { slugifyTitle } from '../utils/slugifyTitle'
 
@@ -32,12 +30,6 @@ export default {
     return {
       showToolkit: false
     }
-  },
-  computed: {
-    ...mapState({
-      cursorIsStuck: state => state.app.cursorIsStuck,
-      scrollHeight: state => state.app.scrollHeight
-    })
   },
   methods: {
     ...mapMutations('app', ['GET_PROJECT']),

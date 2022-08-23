@@ -65,8 +65,14 @@ export default {
     // See: https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     // See: https://image.nuxtjs.org/
-    '@nuxt/image'
+    '@nuxt/image',
+    // See: https://google-analytics.nuxtjs.org/setup
+    '@nuxtjs/google-analytics'
   ],
+
+  googleAnalytics: {
+    id: process.env.GOOGLE_ANALYTICS_ID
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
@@ -78,7 +84,10 @@ export default {
     apiURL: process.env.API_URL || 'http://localhost:1337',
     emailJsServiceId: process.env.EMAILJS_SERVICE_ID,
     emailJsTemplateId: process.env.EMAILJS_TEMPLATE_ID,
-    emailJsUserId: process.env.EMAILJS_USER_ID
+    emailJsUserId: process.env.EMAILJS_USER_ID,
+    googleAnalytics: {
+      id: process.env.GOOGLE_ANALYTICS_ID
+    }
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

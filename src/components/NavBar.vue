@@ -1,5 +1,5 @@
 <template>
-  <nav ref="navbar" class="nav">
+  <nav class="nav">
     <div class="nav__logo">
       <logo />
       <div v-show="$route.path === '/' || $route.path === '/projets'" class="nav__intro">
@@ -8,99 +8,19 @@
     </div>
     <div v-show="$route.path === '/' || $route.path === '/projets'" class="nav__buttons">
       <nuxt-link to="/a-propos">
-        <custom-button class="nav__button" text="À propos" />
+        <custom-button text="À propos" />
       </nuxt-link>
       <nuxt-link to="/contact">
-        <custom-button class="nav__button" text="Contact" />
+        <custom-button text="Contact" />
       </nuxt-link>
     </div>
   </nav>
 </template>
 
 <script>
-// import gsap from 'gsap'
-
 export default {
   name: 'NavBarComponent'
-  // mounted () {
-  //   gsap.to(this.$refs.navbar, {
-  //     opacity: 1,
-  //     delay: 2.5,
-  //     onRefresh: () => {
-  //
-  //     }
-  //   })
-  // }
 }
 </script>
 
-<style scoped lang="scss">
-.nav {
-  z-index: 10;
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin: 30px;
-  font-family: $font-secondary;
-
-  &__logo {
-    flex-grow: 1;
-    position: relative;
-    display: flex;
-    align-items: center;
-    margin-right: 30px;
-    min-height: 38px;
-    max-width: 200px;
-  }
-
-  &__intro {
-    position: absolute;
-    top: 46px;
-    font-family: $font-primary;
-    font-size: 12px;
-  }
-
-  &__buttons {
-    display: flex;
-    flex-direction: column;
-
-    a {
-      &:first-child {
-        margin-bottom: 10px;
-      }
-    }
-  }
-
-  &__button {
-    padding: 11px 10px 7px 10px;
-  }
-}
-
-@media (min-width: 768px) {
-  .nav {
-    margin: 30px 65px;
-    &__logo {
-      max-width: 235px;
-    }
-    &__intro {
-      display: block;
-      font-size: 14px;
-    }
-    &__buttons {
-      flex-direction: row;
-      a {
-        &:first-child {
-          margin-right: 40px;
-        }
-      }
-    }
-    &__button {
-      padding: 12px 20px 7px 20px;
-    }
-  }
-}
-</style>
+<style scoped src="../assets/styles/components/navbar.scss" lang="scss" />

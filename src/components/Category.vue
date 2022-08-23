@@ -47,7 +47,6 @@ export default {
 
 <style scoped lang="scss">
 .category {
-  //cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
