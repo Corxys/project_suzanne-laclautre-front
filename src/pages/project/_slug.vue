@@ -9,7 +9,7 @@
         {{ project.year }}
       </h3>
       <div class="project__header-image mobile">
-        <img v-if="project.pictures" :src="project.pictures[0].source" :alt="project.pictures[0].alt ? project.pictures[0].alt : ''">
+        <img v-if="project.pictures" :src="project.pictures[0].srcLarge ? project.pictures[0].srcLarge : project.pictures[0].srcMedium ? project.pictures[0].srcMedium : project.pictures[0].srcSmall ? project.pictures[0].srcSmall : '/'" :alt="project.pictures[0].alt ? project.pictures[0].alt : ''">
       </div>
       <p class="project__header-text">
         {{ project.description }}
@@ -18,7 +18,7 @@
     </div>
     <div class="project__content">
       <div v-if="project.pictures" class="project__content-images">
-        <img v-for="(image, index) in project.pictures" :key="image.id" :class="index === 0 ? 'project__content-image desktop' : 'project__content-image'" :src="image.source" :alt="image.alt ? image.alt : ''">
+        <img v-for="(image, index) in project.pictures" :key="image.id" :class="index === 0 ? 'project__content-image desktop' : 'project__content-image'" :src="image.srcLarge ? image.srcLarge : image.srcMedium ? image.srcMedium : image.srcSmall ? image.srcSmall : '/'" :alt="image.alt ? image.alt : ''">
       </div>
       <arrow-back class="mobile" />
     </div>
