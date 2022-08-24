@@ -32,19 +32,6 @@
       </nuxt-link>
     </p>
     <h2 class="mentions__subtitle">
-      Hébergement
-    </h2>
-    <p class="mentions__text">
-      Hébergeur : Nom
-      <br>
-      12 Rue du Huit Mai 1945, 60350 ATTICHY
-      <br>
-      Site Web :
-      <nuxt-link class="mentions__text-link" to="/">
-        www.siteweb.com
-      </nuxt-link>
-    </p>
-    <h2 class="mentions__subtitle">
       Développement
     </h2>
     <p class="mentions__text">
@@ -61,11 +48,7 @@
       Conditions d’utilisation
     </h2>
     <p class="mentions__text">
-      Ce site (
-      <nuxt-link class="mentions__text-link" to="/">
-        {{ url }}
-      </nuxt-link>
-      ) est proposé en différents langages web (HTML, HTML5, Javascript, CSS, etc…) pour un meilleur confort d’utilisation et un graphisme plus agréable.
+      Ce site (<nuxt-link class="mentions__text-link" to="/">{{ url }}</nuxt-link>) est proposé en différents langages web (HTML, HTML5, Javascript, CSS, etc…) pour un meilleur confort d’utilisation et un graphisme plus agréable.
       <br> <br>
       Nous vous recommandons de recourir à des navigateurs modernes comme Internet explorer, Safari, Firefox, Google Chrome, etc…
       <br> <br>
@@ -103,11 +86,7 @@
       Services fournis
     </h2>
     <p class="mentions__text">
-      L’ensemble des activités de la société ainsi que ses informations sont présentés sur notre site
-      <nuxt-link class="mentions__text-link" to="/">
-        {{ url }}
-      </nuxt-link>
-      .
+      L’ensemble des activités de la société ainsi que ses informations sont présentés sur notre site <nuxt-link class="mentions__text-link" to="/">{{ url }}</nuxt-link>.
       <br> <br>
       {{ name }} s’efforce de fournir sur le site
       <nuxt-link class="mentions__text-link" to="/">
@@ -131,7 +110,7 @@
     <p class="mentions__text">
       Les informations contenues sur ce site sont aussi précises que possible et le site remis à jour à différentes périodes de l’année, mais peut toutefois contenir des inexactitudes ou des omissions.
       <br> <br>
-      Si vous constatez une lacune, erreur ou ce qui parait être un dysfonctionnement, merci de bien vouloir le signaler par courriel, à l’adresse <a class="mentions__text-link" href="mailto:suzanne.laclautre@gmail.com">{{ mail }}</a>, en décrivant le problème de la manière la plus précise possible (page posant problème, type d’ordinateur et de navigateur utilisé, …).
+      Si vous constatez une lacune, erreur ou ce qui parait être un dysfonctionnement, merci de bien vouloir le signaler par courriel, à l’adresse <a class="mentions__text-link" href="mailto:suzanne.laclautre@gmail.com">{{ mail }}</a>, en décrivant le problème de la manière la plus précise possible (page posant problème, type d’ordinateur et de navigateur utilisé, etc).
       <br> <br>
       Tout contenu téléchargé se fait aux risques et périls de l’utilisateur et sous sa seule responsabilité. En conséquence, ne saurait être tenu responsable d’un quelconque dommage subi par l’ordinateur de l’utilisateur ou d’une quelconque perte de données consécutives au téléchargement.
       <br> <br>
@@ -143,13 +122,9 @@
       Propriété intellectuelle
     </h2>
     <p class="mentions__text">
-      Tout le contenu du présent site
-      <nuxt-link class="mentions__text-link" to="/">
-        {{ url }}
-      </nuxt-link>
-      , incluant, de façon non limitative, les graphismes, images, textes, vidéos, animations, sons, logos, gifs et icônes ainsi que leur mise en forme sont la propriété exclusive de la société à l’exception des marques, logos ou contenus appartenant à d’autres sociétés partenaires ou auteurs.
+      Tout le contenu du présent site<nuxt-link class="mentions__text-link" to="/">{{ url }}</nuxt-link>, incluant, de façon non limitative, les graphismes, images, textes, vidéos, animations, sons, logos, gifs et icônes ainsi que leur mise en forme sont la propriété exclusive de la société à l’exception des marques, logos ou contenus appartenant à d’autres sociétés partenaires ou auteurs.
       <br> <br>
-      Toute reproduction, distribution, modification, adaptation, retransmission ou publication, même partielle, de ces différents éléments est strictement interdite sans l’accord exprès par écrit de {{ name }}. Cette représentation ou reproduction, par quelque procédé que ce soit, constitue une contrefaçon sanctionnée par les articles L.335-2 et suivants du Code de la propriété intellectuelle. Le non-respect de cette interdiction constitue une contrefaçon pouvant engager la responsabilité civile et pénale du contrefacteur. En outre, les propriétaires des Contenus copiés pourraient intenter une action en justice à votre encontre.
+      Toute reproduction, distribution, modification, adaptation, retransmission ou publication, même partielle, de ces différents éléments est strictement interdite sans l’accord exprès par écrit de {{ name }}. Cette représentation ou reproduction, par quelque procédé que ce soit, constitue une contrefaçon sanctionnée par les articles L.335-2 et suivants du Code de la propriété intellectuelle. Le non-respect de cette interdiction constitue une contrefaçon pouvant engager la responsabilité civile et pénale du contrefacteur. En outre, les propriétaires des contenus copiés pourraient intenter une action en justice à votre encontre.
     </p>
     <h2 class="mentions__subtitle">
       Déclaration à la CNIL
@@ -171,13 +146,11 @@
       Données personnelles
     </h2>
     <p class="mentions__text">
-      De manière générale, vous n’êtes pas tenu de nous communiquer vos données personnelles lorsque vous visitez notre site Internet <nuxt-link class="mentions__text-link" to="/">
-        {{ url }}
-      </nuxt-link>.
+      De manière générale, vous n’êtes pas tenu de nous communiquer vos données personnelles lorsque vous visitez notre site Internet <nuxt-link class="mentions__text-link" to="/">{{ url }}</nuxt-link>.
       <br> <br>
-      Cependant, ce principe comporte certaines exceptions. En effet, pour certains services proposés par notre site, vous pouvez être amenés à nous communiquer certaines données telles que : votre nom, votre fonction, le nom de votre société, votre adresse électronique, et votre numéro de téléphone. Tel est le cas lorsque vous remplissez le formulaire qui vous est proposé en ligne, dans la rubrique « contact ».
+      Cependant, ce principe comporte certaines exceptions. En effet, pour certains services proposés par notre site, vous pouvez être amenés à nous communiquer certaines données telles que : votre nom, votre prénom, et votre adresse électronique. Tel est le cas lorsque vous remplissez le formulaire qui vous est proposé en ligne, dans la rubrique « contact ».
       <br> <br>
-      Dans tous les cas, vous pouvez refuser de fournir vos données personnelles. Dans ce cas, vous ne pourrez pas utiliser les services du site, notamment celui de solliciter des renseignements sur notre société, ou de recevoir les lettres d’information.
+      Dans tous les cas, vous pouvez refuser de fournir vos données personnelles. Dans ce cas, vous ne pourrez pas utiliser les services du site, notamment celui de solliciter des renseignements sur notre société.
       <br> <br>
       Enfin, nous pouvons collecter de manière automatique certaines informations vous concernant lors d’une simple navigation sur notre site internet, notamment : des informations concernant l’utilisation de notre site, comme les zones que vous visitez et les services auxquels vous accédez, votre adresse IP, le type de votre navigateur, vos temps d’accès.
       <br> <br>
@@ -199,26 +172,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
-.mentions {
-  display: flex;
-  flex-direction: column;
-  padding: 176px 65px 100px 65px;
-  &__title {
-    margin-bottom: 30px;
-  }
-  &__subtitle {
-    margin: 20px 0 15px 0;
-  }
-  &__text {
-    width: 45%;
-    &-link {
-      font-weight: 700;
-    }
-  }
-}
-
-</style>
+<style scoped src="../../assets/styles/pages/mentions.scss" lang="scss" />
 
 <router>
 {

@@ -7,7 +7,7 @@
         </p>
         <div class="contact__infos-lines">
           <div class="contact__infos-line">
-            <nuxt-img class="contact__infos-icon" src="/icons/contact_mail.svg" alt="Icône d'une enveloppe noire" />
+            <nuxt-img provider="static" format="webp" class="contact__infos-icon" src="/icons/contact_mail.svg" alt="Icône d'une enveloppe noire" />
             <a href="mailto:suzanne.laclautre@gmail.com">
               <div class="contact__infos-text">
                 suzanne.laclautre@gmail.com
@@ -15,7 +15,7 @@
             </a>
           </div>
           <div class="contact__infos-line">
-            <nuxt-img class="contact__infos-icon" src="/icons/contact_city.svg" alt="Icône d'un marqueur sur une carte" />
+            <nuxt-img provider="static" format="webp" class="contact__infos-icon" src="/icons/contact_city.svg" alt="Icône d'un marqueur sur une carte" />
             <div class="contact__infos-text">
               Strasbourg
             </div>
@@ -26,10 +26,10 @@
         </a>
         <div class="contact__infos-socials">
           <a href="https://www.instagram.com/suzanne.laclautre/" target="_blank">
-            <nuxt-img class="contact__infos-social" src="/icons/contact_instagram.svg" alt="Logo du réseau social Instagram" />
+            <nuxt-img provider="static" format="webp" class="contact__infos-social" src="/icons/contact_instagram.svg" alt="Logo du réseau social Instagram" />
           </a>
           <a href="https://www.linkedin.com/in/suzanne-laclautre-ba775520a/" target="_blank">
-            <nuxt-img class="contact__infos-social" src="/icons/contact_linkedin.svg" alt="Logo du réseau professionnel LinkedIn" />
+            <nuxt-img provider="static" format="webp" class="contact__infos-social" src="/icons/contact_linkedin.svg" alt="Logo du réseau professionnel LinkedIn" />
           </a>
         </div>
       </div>
@@ -71,14 +71,6 @@ export default {
         message: ''
       }
     }
-  },
-  beforeMount () {
-    const vh = window.innerHeight / 100
-    document.documentElement.style.setProperty('--vh', `${vh}px`)
-    window.addEventListener('resize', () => {
-      const vh = window.innerHeight / 100
-      document.documentElement.style.setProperty('--vh', `${vh}px`)
-    })
   },
   methods: {
     sendEmail () {

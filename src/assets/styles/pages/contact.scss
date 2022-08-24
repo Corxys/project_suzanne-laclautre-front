@@ -10,7 +10,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     background-color: $color-secondary;
     padding: 100px 30px 40px 30px;
   }
@@ -151,11 +150,10 @@
   .contact {
     flex-direction: row;
     &__content {
-      width: 40%;
+      width: 50%;
       padding: 100px 65px 65px 65px;
     }
     &__infos {
-      width: 80%;
       p {
         max-width: 310px;
       }

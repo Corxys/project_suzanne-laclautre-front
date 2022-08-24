@@ -70,6 +70,13 @@ export default {
     '@nuxtjs/google-analytics'
   ],
 
+  image: {
+    provider: 'cloudinary',
+    cloudinary: {
+      baseURL: 'https://res.cloudinary.com/dzgr86lad/image/upload/'
+    }
+  },
+
   googleAnalytics: {
     id: process.env.GOOGLE_ANALYTICS_ID
   },
