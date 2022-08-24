@@ -1,7 +1,7 @@
 <template>
   <div class="category" @click="getProjectsByCategory(data.name, redirect)">
     <div class="category__image">
-      <nuxt-img class="category__source" :src="data.src" :alt="data.alt" />
+      <nuxt-img provider="static" format="webp" class="category__source" :src="data.src" :alt="data.alt" />
       <div class="category__background" :class="{ active: backgroundActive }" />
     </div>
     <div v-show="showTitle" class="category__title">

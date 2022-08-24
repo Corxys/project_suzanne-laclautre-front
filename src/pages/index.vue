@@ -5,14 +5,14 @@
         <category v-for="category of categories" :key="category.id" :data="category" :redirect="true" :show-title="true" />
         <div class="header__category mobile">
           <div class="header__scroll">
-            <nuxt-img class="header__scroll-border" src="/images/scroll_border.png" alt="Scroll pour en voir plus" />
-            <nuxt-img class="header__scroll-body" src="/images/scroll_body.png" alt="Illustration" />
+            <nuxt-img provider="static" format="webp" class="header__scroll-border" src="/images/scroll_border.png" alt="Scroll pour en voir plus" />
+            <nuxt-img provider="static" format="webp" class="header__scroll-body" src="/images/scroll_body.png" alt="Illustration" />
           </div>
         </div>
       </div>
       <div class="header__scroll desktop">
-        <nuxt-img class="header__scroll-border" src="/images/scroll_border.png" alt="Scroll pour en voir plus" />
-        <nuxt-img class="header__scroll-body" src="/images/scroll_body.png" alt="Illustration" />
+        <nuxt-img provider="static" format="webp" class="header__scroll-border" src="/images/scroll_border.png" alt="Scroll pour en voir plus" />
+        <nuxt-img provider="static" format="webp" class="header__scroll-body" src="/images/scroll_body.png" alt="Illustration" />
       </div>
       <div class="header__background" />
     </header>
@@ -52,8 +52,7 @@ export default {
   name: 'HomePage',
   data () {
     return {
-      categories,
-      vh: null
+      categories
     }
   },
   computed: {
@@ -61,16 +60,10 @@ export default {
       projects: state => state.app.projects
     })
   },
-  beforeMount () {
-    this.vh = window.innerHeight / 100
-    document.documentElement.style.setProperty('--vh', `${this.vh}px`)
-    window.addEventListener('resize', this.adjustViewHeight)
-  },
   mounted () {
     window.addEventListener('scroll', this.rotateTriggerScroll)
   },
   unmounted () {
-    window.removeEventListener('resize', this.adjustViewHeight)
     window.removeEventListener('scroll', this.rotateTriggerScroll)
   },
   methods: {
@@ -83,13 +76,6 @@ export default {
       triggers.forEach((trigger) => {
         trigger.style.transform = 'rotate(' + window.scrollY / 2 + 'deg) translate3d(0px, 0px, 0px)'
       })
-    },
-    /**
-     * @name adjustViewHeight
-     * on resize, we adjust the height of the viewport (fix 100vh bug on iOS)
-     */
-    adjustViewHeight () {
-      document.documentElement.style.setProperty('--vh', `${this.vh}px`)
     }
   }
 }

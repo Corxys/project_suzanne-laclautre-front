@@ -1,15 +1,14 @@
 <template>
   <div v-if="loading" class="loading">
     <div class="loading__image">
-      <nuxt-img class="loading__image-border" src="/images/loader_border.svg" alt="Scroll pour en voir plus" />
-      <nuxt-img class="loading__image-body" src="/images/scroll_body.png" alt="Illustration" />
+      <nuxt-img provider="static" format="webp" class="loading__image-border" src="/images/loader_border.svg" alt="Scroll pour en voir plus" />
+      <nuxt-img provider="static" format="webp" class="loading__image-body" src="/images/scroll_body.png" alt="Illustration" />
     </div>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-// import gsap from 'gsap'
 
 export default {
   name: 'LoadingScreenComponent',
@@ -23,11 +22,6 @@ export default {
       projects: state => state.projects.projects
     })
   },
-  // updated () {
-  //   const tl = new gsap.timeline({ repeat: 0 })
-  //   tl.from('.loading__image', { opacity: 0, delay: 1 })
-  //   tl.to('.loading__image', { opacity: 1, delay: 1 })
-  // },
   methods: {
     start () {
       this.loading = true

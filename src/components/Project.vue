@@ -1,6 +1,12 @@
 <template>
   <div class="project" @click="getProject(data)" @mouseenter="showToolkit = true" @mousemove="moveToolkit" @mouseleave="showToolkit = false">
-    <img class="project__image" :src="data.pictures[0].srcLarge ? data.pictures[0].srcLarge : data.pictures[0].srcMedium ? data.pictures[0].srcMedium : data.pictures[0].srcSmall ? data.pictures[0].srcSmall : '/'" :data="data.pictures[0].alt !== '' ? data.pictures[0].alt : ''">
+    <nuxt-img
+      class="project__image"
+      provider="cloudinary"
+      format="webp"
+      :src="data.pictures[0].srcLarge ? data.pictures[0].srcLarge : data.pictures[0].srcMedium ? data.pictures[0].srcMedium : data.pictures[0].srcSmall ? data.pictures[0].srcSmall : '/'"
+      :data="data.pictures[0].alt !== '' ? data.pictures[0].alt : `Photo du projet ${ data.title }`"
+    />
     <div ref="toolkit" class="project__text" :class="{ active: showToolkit }">
       <span class="project__text--bold">
         {{ data.title }}
@@ -51,7 +57,6 @@ export default {
 
 <style scoped lang="scss">
 .project {
-  //cursor: pointer;
   position: relative;
   &__image {
     display: block;

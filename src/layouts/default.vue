@@ -14,6 +14,7 @@ export default {
   name: 'DefaultLayout',
   data () {
     return {
+      vh: null,
       cursorOuter: null,
       cursorInner: null,
       cursorOuterOriginalState: {
@@ -30,13 +31,27 @@ export default {
     }
   },
   mounted () {
+    this.vh = window.innerHeight / 100
+    document.documentElement.style.setProperty('--vh', `${this.vh}px`)
+    window.addEventListener('resize', this.adjustViewHeight)
+
     this.cursorOuter = document.querySelector('.cursor__large')
     this.cursorInner = document.querySelector('.cursor__small')
     this.cursorOuterOriginalState.width = this.cursorOuter.getBoundingClientRect().width
     this.cursorOuterOriginalState.height = this.cursorOuter.getBoundingClientRect().height
     this.updateCursor()
   },
+  unmounted () {
+    window.removeEventListener('resize', this.adjustViewHeight)
+  },
   methods: {
+    /**
+     * @name adjustViewHeight
+     * on resize, we adjust the height of the viewport (fix 100vh bug on iOS)
+     */
+    adjustViewHeight () {
+      document.documentElement.style.setProperty('--vh', `${this.vh}px`)
+    },
     /**
      * @name mouseDown
      * when the user press mouse down
