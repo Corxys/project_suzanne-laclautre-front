@@ -44,3 +44,35 @@ p {
 a {
   cursor: none;
 }
+
+.mobile {
+  display: block;
+}
+.desktop {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .mobile {
+    display: none;
+  }
+  .desktop {
+    display: block;
+  }
+}
+
+body {
+  cursor: none;
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar {
+    width: 7px;
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $color-black;
+  }
+}
+
+

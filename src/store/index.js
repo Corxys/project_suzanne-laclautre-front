@@ -16,11 +16,18 @@ export const actions = {
             tags: []
           }
           item.attributes.pictures.forEach((picture) => {
-            project.pictures.push({
+            const picObject = {
               id: picture.id,
-              alt: picture.alt,
-              source: picture.source.data.attributes.url
-            })
+              alt: picture.alt
+            }
+            if (picture.source.data.attributes.formats.large) {
+              picObject.srcLarge = picture.source.data.attributes.formats.large.url
+            } else if (picture.source.data.attributes.formats.medium) {
+              picObject.srcMedium = picture.source.data.attributes.formats.medium.url
+            } else if (picture.source.data.attributes.formats.small) {
+              picObject.srcSmall = picture.source.data.attributes.formats.small.url
+            }
+            project.pictures.push(picObject)
           })
           item.attributes.tags.data.forEach((tag) => {
             project.tags.push({
