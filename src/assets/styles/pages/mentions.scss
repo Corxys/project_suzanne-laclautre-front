@@ -1,0 +1,25 @@
+.mentions {
+  display: flex;
+  flex-direction: column;
+  padding: 176px 30px 100px 30px;
+  &__title {
+    margin-bottom: 30px;
+  }
+  &__subtitle {
+    margin: 20px 0 15px 0;
+  }
+  &__text {
+    &-link {
+      font-weight: 700;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .mentions {
+    padding: 176px 65px 100px 65px;
+    &__text {
+      width: 45%;
+    }
+  }
+}
