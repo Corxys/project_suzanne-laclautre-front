@@ -3,6 +3,7 @@ body {
   font-family: $font-primary;
   font-size: 0.813rem;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 h1 {

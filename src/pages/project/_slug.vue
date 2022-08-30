@@ -1,34 +1,33 @@
 <template>
-  <section v-if="project" class="project">
+  <section v-if="objectProject" class="project">
     <div class="project__header">
       <h2 class="project__header-title">
-        {{ project.title }}
+        {{ objectProject.title }}
       </h2>
       <h3 class="project__header-date">
-        {{ project.year }}
+        {{ objectProject.year }}
       </h3>
       <div class="project__header-image mobile">
         <nuxt-img
-          provider="cloudinary"
-          format="webp"
-          v-if="project.pictures"
-          :src="project.pictures[0].srcLarge ? project.pictures[0].srcLarge : project.pictures[0].srcMedium ? project.pictures[0].srcMedium : project.pictures[0].srcSmall ? project.pictures[0].srcSmall : '/'"
-          :alt="project.pictures[0].alt ? project.pictures[0].alt : ''"
+          provider="strapi"
+          v-if="objectProject.pictures"
+          :src="objectProject.pictures[0].src"
+          :alt="objectProject.pictures[0].alt ? objectProject.pictures[0].alt : ''"
         />
       </div>
       <p class="project__header-text">
-        {{ project.description }}
+        {{ objectProject.description }}
       </p>
       <arrow-back class="desktop" />
     </div>
     <div class="project__content">
-      <div v-if="project.pictures" class="project__content-images">
+      <div v-if="objectProject.pictures" class="project__content-images">
         <nuxt-img
-          provider="cloudinary"
-          format="webp"
-          v-for="(image, index) in project.pictures"
+          provider="strapi"
+          v-for="(image, index) in objectProject.pictures"
           :key="image.id"
-          :class="index === 0 ? 'project__content-image desktop' : 'project__content-image'" :src="image.srcLarge ? image.srcLarge : image.srcMedium ? image.srcMedium : image.srcSmall ? image.srcSmall : '/'"
+          :class="index === 0 ? 'project__content-image desktop' : 'project__content-image'"
+          :src="image.src"
           :alt="image.alt ? image.alt : ''"
         />
       </div>
@@ -42,10 +41,19 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'ProjectPage',
+  data () {
+    return {
+      objectProject: {}
+    }
+  },
   computed: {
     ...mapState({
       project: state => state.app.project
     })
+  },
+  mounted () {
+    const localStorage = window.localStorage.getItem('project')
+    localStorage ? this.objectProject = JSON.parse(localStorage) : this.project
   }
 }
 </script>

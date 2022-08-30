@@ -16,23 +16,17 @@ export const actions = {
             tags: []
           }
           item.attributes.pictures.forEach((picture) => {
-            let url = ''
             const picObject = {
               id: picture.id,
-              alt: picture.alt
+              alt: picture.alt,
+              src: picture.source.data.attributes.url
             }
             if (picture.source.data.attributes.formats.large) {
-              url = picture.source.data.attributes.formats.large.url.split('/')
-              url = url.slice(url.length - 2).join('/')
-              picObject.srcLarge = '/' + url
+              picObject.srcLarge = picture.source.data.attributes.formats.large.url
             } else if (picture.source.data.attributes.formats.medium) {
-              url = picture.source.data.attributes.formats.medium.url.split('/')
-              url = url.slice(url.length - 2).join('/')
-              picObject.srcMedium = '/' + url
+              picObject.srcMedium = picture.source.data.attributes.formats.medium.url
             } else if (picture.source.data.attributes.formats.small) {
-              url = picture.source.data.attributes.formats.small.url.split('/')
-              url = url.slice(url.length - 2).join('/')
-              picObject.srcSmall = '/' + url
+              picObject.srcSmall = picture.source.data.attributes.formats.small.url
             }
             project.pictures.push(picObject)
           })

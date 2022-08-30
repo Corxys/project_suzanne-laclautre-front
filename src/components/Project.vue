@@ -1,10 +1,9 @@
 <template>
   <div class="project" @click="getProject(data)" @mouseenter="showToolkit = true" @mousemove="moveToolkit" @mouseleave="showToolkit = false">
     <nuxt-img
+      provider="strapi"
       class="project__image"
-      provider="cloudinary"
-      format="webp"
-      :src="data.pictures[0].srcLarge ? data.pictures[0].srcLarge : data.pictures[0].srcMedium ? data.pictures[0].srcMedium : data.pictures[0].srcSmall ? data.pictures[0].srcSmall : '/'"
+      :src="data.pictures[0].src"
       :data="data.pictures[0].alt !== '' ? data.pictures[0].alt : `Photo du projet ${ data.title }`"
     />
     <div ref="toolkit" class="project__text" :class="{ active: showToolkit }">
@@ -39,9 +38,9 @@ export default {
   },
   methods: {
     ...mapMutations('app', ['GET_PROJECT']),
-    ...mapMutations('app', ['UPDATE_CURSOR_STUCK']),
     getProject (project) {
       this.GET_PROJECT({ project })
+      window.localStorage.setItem('project', JSON.stringify(project))
       this.$router.push(`/projet/${slugifyTitle(project.title)}`)
     },
     moveToolkit (event) {
