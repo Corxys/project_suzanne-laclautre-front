@@ -1,3 +1,6 @@
+import axios from 'axios'
+import { slugifyTitle } from './src/utils/slugifyTitle'
+
 export default {
   srcDir: 'src',
   buildDir: 'dist',
@@ -13,6 +16,7 @@ export default {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1' },
       { hid: 'description', name: 'description', content: 'Designeuse graphique et conceptrice d\'outils pédagogiques.' },
+      { hid: 'image', name: 'image', content: 'https://bit.ly/3CHW413' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
@@ -35,7 +39,6 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    { src: '~/plugins/vuex-persist.js', ssr: false }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -70,10 +73,22 @@ export default {
     '@nuxtjs/google-analytics'
   ],
 
+  generate: {
+    routes () {
+      return axios.get('https://apisuzanne.pierrekeller.com/api/projects')
+        .then((response) => {
+          return response.data.data.map((project) => {
+            return {
+              route: '/projet/' + slugifyTitle(project.attributes.title)
+            }
+          })
+        })
+    }
+  },
+
   image: {
-    provider: 'cloudinary',
-    cloudinary: {
-      baseURL: 'https://res.cloudinary.com/dzgr86lad/image/upload/'
+    strapi: {
+      baseURL: 'https://apisuzanne.pierrekeller.com'
     }
   },
 
@@ -84,11 +99,11 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: process.env.API_URL || 'http://localhost:1337'
+    baseURL: process.env.API_URL || 'https://apisuzanne.pierrekeller.com'
   },
 
   publicRuntimeConfig: {
-    apiURL: process.env.API_URL || 'http://localhost:1337',
+    apiURL: process.env.API_URL || 'https://apisuzanne.pierrekeller.com',
     emailJsServiceId: process.env.EMAILJS_SERVICE_ID,
     emailJsTemplateId: process.env.EMAILJS_TEMPLATE_ID,
     emailJsUserId: process.env.EMAILJS_USER_ID,

@@ -38,7 +38,7 @@ export default {
   methods: {
     ...mapMutations('app', ['GET_PROJECTS_BY_CATEGORY']),
     getProjectsByCategory (categoryName, redirect) {
-      this.GET_PROJECTS_BY_CATEGORY({ name: categoryName })
+      this.GET_PROJECTS_BY_CATEGORY({ name: categoryName, redirect })
       if (redirect) { this.$router.push('/projets') }
     }
   }
