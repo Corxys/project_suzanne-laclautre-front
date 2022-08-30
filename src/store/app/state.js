@@ -1,7 +1,7 @@
 export default () => ({
   projects: [],
-  projectsSpotlight: [],
   activeCategory: '',
-  activeProjects: [],
-  project: {}
+  projectsByCategory: [],
+  project: {},
+  errorMessage: ''
 })

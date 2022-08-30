@@ -1,5 +1,5 @@
 <template>
-  <div class="back">
+  <div class="back" @click="$router.go(-1)">
     <div class="back__arrow">
       <div class="back__arrow-body" />
       <div class="back__arrow-tip" />
@@ -19,6 +19,20 @@ export default {
 <style scoped lang="scss">
 .back {
   max-width: 120px;
+  align-self: flex-start;
+  &:hover {
+    .back__text {
+      font-weight: 700;
+    }
+    .back__arrow {
+      &-body {
+        width: 55px;
+      }
+      &-tip {
+        left: 51px;
+      }
+    }
+  }
   &__arrow {
     position: relative;
     top: 6px;
@@ -29,7 +43,7 @@ export default {
       width: 50px;
       height: 1px;
       background-color: $color-black;
-      transition: transform 500ms ease-in;
+      transition: width 200ms ease-in-out;
     }
     &-tip {
       position: absolute;
@@ -39,13 +53,14 @@ export default {
       border-top: 1px solid $color-black;
       border-right: 1px solid $color-black;
       transform: rotate(45deg);
-      transition: transform 500ms ease-in;
+      transition: left 200ms ease-in-out;
     }
   }
   &__text {
     margin-left: 70px;
     font-style: italic;
     text-transform: lowercase;
+    transition: all 200ms ease-in-out;
   }
 }
 </style>

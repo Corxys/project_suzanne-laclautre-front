@@ -1,3 +1,6 @@
+import axios from 'axios'
+import { slugifyTitle } from './src/utils/slugifyTitle'
+
 export default {
   srcDir: 'src',
   buildDir: 'dist',
@@ -12,7 +15,8 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      { hid: 'description', name: 'description', content: 'Designeuse graphique et conceptrice d\'outils pédagogiques.' },
+      { hid: 'image', name: 'image', content: 'https://bit.ly/3CHW413' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
@@ -23,6 +27,8 @@ export default {
       }
     ]
   },
+
+  loading: '~/components/LoadingScreen.vue',
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
@@ -62,20 +68,48 @@ export default {
     // See: https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     // See: https://image.nuxtjs.org/
-    '@nuxt/image'
+    '@nuxt/image',
+    // See: https://google-analytics.nuxtjs.org/setup
+    '@nuxtjs/google-analytics'
   ],
+
+  generate: {
+    routes () {
+      return axios.get('https://apisuzanne.pierrekeller.com/api/projects')
+        .then((response) => {
+          return response.data.data.map((project) => {
+            return {
+              route: '/projet/' + slugifyTitle(project.attributes.title)
+            }
+          })
+        })
+    }
+  },
+
+  image: {
+    strapi: {
+      baseURL: 'https://apisuzanne.pierrekeller.com'
+    }
+  },
+
+  googleAnalytics: {
+    id: process.env.GOOGLE_ANALYTICS_ID
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: process.env.API_URL || 'http://localhost:1337'
+    baseURL: process.env.API_URL || 'https://apisuzanne.pierrekeller.com'
   },
 
   publicRuntimeConfig: {
-    apiURL: process.env.API_URL || 'http://localhost:1337',
+    apiURL: process.env.API_URL || 'https://apisuzanne.pierrekeller.com',
     emailJsServiceId: process.env.EMAILJS_SERVICE_ID,
     emailJsTemplateId: process.env.EMAILJS_TEMPLATE_ID,
-    emailJsUserId: process.env.EMAILJS_USER_ID
+    emailJsUserId: process.env.EMAILJS_USER_ID,
+    googleAnalytics: {
+      id: process.env.GOOGLE_ANALYTICS_ID
+    }
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

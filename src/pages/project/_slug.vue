@@ -1,25 +1,35 @@
 <template>
-  <section class="project">
+  <section v-if="objectProject" class="project">
     <div class="project__header">
       <h2 class="project__header-title">
-        {{ project.attributes.titre }}
+        {{ objectProject.title }}
       </h2>
       <h3 class="project__header-date">
-        {{ project.attributes.annee }}
+        {{ objectProject.year }}
       </h3>
       <div class="project__header-image mobile">
-        <img :src="$config.apiURL + project.attributes.photos.data[0].attributes.url" alt="">
+        <nuxt-img
+          provider="strapi"
+          v-if="objectProject.pictures"
+          :src="objectProject.pictures[0].src"
+          :alt="objectProject.pictures[0].alt ? objectProject.pictures[0].alt : ''"
+        />
       </div>
       <p class="project__header-text">
-        {{ project.attributes.description }}
+        {{ objectProject.description }}
       </p>
-      <div class="project__header-back" @click="$router.go(-1)">
-        <arrow-back class="desktop" />
-      </div>
+      <arrow-back class="desktop" />
     </div>
     <div class="project__content">
-      <div class="project__content-images">
-        <img v-for="(image, index) in project.attributes.photos.data" :key="image.id" :class="index === 0 ? 'project__content-image desktop' : 'project__content-image'" :src="$config.apiURL + image.attributes.url" alt="">
+      <div v-if="objectProject.pictures" class="project__content-images">
+        <nuxt-img
+          provider="strapi"
+          v-for="(image, index) in objectProject.pictures"
+          :key="image.id"
+          :class="index === 0 ? 'project__content-image desktop' : 'project__content-image'"
+          :src="image.src"
+          :alt="image.alt ? image.alt : ''"
+        />
       </div>
       <arrow-back class="mobile" />
     </div>
@@ -31,84 +41,25 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'ProjectPage',
+  data () {
+    return {
+      objectProject: {}
+    }
+  },
   computed: {
     ...mapState({
-      project: state => state.projects.project
+      project: state => state.app.project
     })
+  },
+  mounted () {
+    const localStorage = window.localStorage.getItem('project')
+    localStorage ? this.objectProject = JSON.parse(localStorage) : this.project
   }
 }
 </script>
 
-<style scoped lang="scss">
-.project {
-  display: flex;
-  flex-direction: column;
-  padding: 100px 30px 100px 30px;
-  &__header {
-    &-date {
-      margin: 10px 0;
-    }
-    &-image {
-      margin: 30px 0;
-      img {
-        width: 100%;
-      }
-    }
-    &-text {
-      white-space: pre-line;
-      line-height: 1.5;
-    }
-    &-back {
-      cursor: pointer;
-    }
-  }
-  &__content {
-    &-images {
-      margin-top: 30px;
-      img {
-        width: 100%;
-        margin-bottom: 30px;
-        &:last-child {
-          margin-bottom: 80px;
-        }
-      }
-    }
-  }
-}
+<style scoped src="../../assets/styles/pages/project.scss" lang="scss">
 
-@media (min-width: 768px) {
-  .project {
-    flex-direction: row;
-    justify-content: center;
-    padding: 176px 65px 100px 65px;
-    &__header {
-      margin-right: 30px;
-      width: 40%;
-      max-width: 400px;
-      &-title {
-        margin-bottom: 30px;
-      }
-      &-date {
-        margin-bottom: 40px;
-      }
-      &-text {
-        margin-bottom: 80px;
-      }
-    }
-    &__content {
-      width: 60%;
-      max-width: 550px;
-      &-images {
-        margin-top: 0;
-        img {
-          &:last-child {
-            margin-bottom: 0;
-          }
-        }
-      }
-    }
-  }
-}
 </style>
 
 <router>

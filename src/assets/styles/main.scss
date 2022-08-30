@@ -2,6 +2,8 @@ body {
   background-color: $color-white;
   font-family: $font-primary;
   font-size: 0.813rem;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 h1 {
@@ -35,3 +37,43 @@ h3 {
   font-size: 16px;
   font-weight: 500;
 }
+
+p {
+  line-height: 1.5;
+}
+
+a {
+  cursor: none;
+}
+
+.mobile {
+  display: block;
+}
+.desktop {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .mobile {
+    display: none;
+  }
+  .desktop {
+    display: block;
+  }
+}
+
+body {
+  cursor: none;
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar {
+    width: 7px;
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $color-black;
+  }
+}
+
+
