@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <div class="footer__text">
-      Crédits © {{ new Date().getFullYear() }} | <nuxt-link class="footer__text-link" to="/mentions-legales">
+      Suzanne Laclautre © {{ new Date().getFullYear() }} | <nuxt-link class="footer__text-link" to="/mentions-legales">
         Mentions légales
       </nuxt-link>
     </div>
@@ -26,7 +26,8 @@ export default {
     align-items: center;
     height: 100px;
     border-top: 1px solid $color-black;
-    width: 80%;
+    width: 100%;
+    font-size: 10px;
     &-link {
       margin-left: 10px;
     }
@@ -38,6 +39,7 @@ export default {
   .footer {
     &__text {
       width: 50%;
+      font-size: 0.813rem;
     }
   }
 }
