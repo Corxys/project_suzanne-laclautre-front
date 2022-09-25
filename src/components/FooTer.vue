@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <div class="footer__text">
-      Suzanne Laclautre © {{ new Date().getFullYear() }} | <nuxt-link class="footer__text-link" to="/mentions-legales">
+      Suzanne L. & Jenny-Lee B. © {{ new Date().getFullYear() }} | <nuxt-link class="footer__text-link" to="/mentions-legales">
         Mentions légales
       </nuxt-link>
     </div>
@@ -27,7 +27,7 @@ export default {
     height: 100px;
     border-top: 1px solid $color-black;
     width: 100%;
-    font-size: 10px;
+    font-size: 9px;
     &-link {
       margin-left: 10px;
     }
@@ -38,7 +38,7 @@ export default {
   // RESPONSIVE FOR THE FOOTER
   .footer {
     &__text {
-      width: 50%;
+      width: 70%;
       font-size: 0.813rem;
     }
   }
