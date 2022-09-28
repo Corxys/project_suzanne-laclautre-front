@@ -166,7 +166,7 @@ export default {
     return {
       name: 'Suzanne LACLAUTRE',
       mail: 'suzanne.laclautre@gmail.com',
-      url: 'www.suzanne-laclautre.com'
+      url: 'www.suzannelaclautre.fr'
     }
   }
 }
